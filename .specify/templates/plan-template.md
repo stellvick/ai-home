@@ -31,11 +31,12 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- [ ] **Simplicity First**: Proposed solution starts with simplest approach; complexity justified if needed
-- [ ] **Clear Naming**: All planned components have descriptive, meaningful names
-- [ ] **Single Responsibility**: Each planned module/function has clear, single purpose
-- [ ] **DRY Principle**: No obvious code duplication in proposed architecture
-- [ ] **Readability**: Technical approach is clear and understandable to team members
+- Code must adhere to clean code principles: readable, maintainable, DRY, SOLID
+- Project must use modern, up-to-date technologies and frameworks
+- Implementation must be objective, clear, and concise without unnecessary complexity
+- Automated tests are not required; manual testing and code reviews ensure quality
+- User interfaces must follow modern design principles
+- Visual components must be aesthetically pleasing and user-friendly
 
 ## Project Structure
 

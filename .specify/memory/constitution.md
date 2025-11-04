@@ -1,43 +1,42 @@
 <!--
-Sync Impact Report
-==================
-Version change: N/A → 1.0.0
-List of modified principles: All 5 principles replaced with clean code focus
-Added sections: Development Standards, Code Review Process
-Removed sections: None
-Templates requiring updates: ✅ .specify/templates/plan-template.md (Constitution Check section updated)
-Follow-up TODOs: None
+Sync Impact Report:
+- Version change: N/A → 1.0.0
+- List of modified principles: All principles added (Clean Code, Modern Technologies, Objective Implementation, Manual Testing Sufficiency, Modern Design, Visually Pleasing Components)
+- Added sections: Technology Stack, Development Workflow
+- Removed sections: None
+- Templates requiring updates: plan-template.md (update Constitution Check to reflect new principles), spec-template.md (adjust testing language to manual), tasks-template.md (aligns with optional tests)
+- Follow-up TODOs: None
 -->
 
 # AI Home Constitution
 
 ## Core Principles
 
-### I. Simplicity First
-Code must prioritize simplicity over complexity. Every implementation should start with the simplest possible solution that meets requirements. Complexity must be justified and introduced only when necessary. Avoid over-engineering and premature optimization.
+### I. Clean Code
+All code must adhere to clean code principles: readable, maintainable, follow DRY (Don't Repeat Yourself), SOLID principles, use meaningful names, keep functions small and focused, and avoid code smells.
 
-### II. Clear Naming
-All identifiers (variables, functions, classes, files) must use descriptive, meaningful names that clearly convey their purpose. Abbreviations should be avoided unless they are universally understood in the domain. Names should be consistent across the codebase.
+### II. Modern Technologies
+The project must utilize modern, up-to-date technologies, frameworks, and libraries to ensure efficiency, security, and long-term maintainability.
 
-### III. Single Responsibility
-Each function, class, and module must have exactly one reason to change. Functions should perform one clear task, classes should represent one concept, and modules should contain related functionality. This principle ensures maintainability and testability.
+### III. Objective Implementation
+Code implementations should be objective, clear, and concise. Avoid unnecessary verbosity, over-engineering, or complexity that doesn't add value.
 
-### IV. DRY Principle
-Don't Repeat Yourself - eliminate code duplication through appropriate abstractions. When similar code appears in multiple places, it must be refactored into reusable functions, classes, or modules. Shared logic should be centralized.
+### IV. Manual Testing Sufficiency
+Automated tests are not required for this project. Quality assurance is achieved through manual testing, thorough code reviews, and adherence to clean code standards.
 
-### V. Readability
-Code must be self-documenting and easy to understand. Use clear structure, consistent formatting, and logical organization. Comments should explain why, not what. Code should read like well-written prose.
+### V. Modern Design
+User interfaces must follow modern design principles, including minimalism, intuitive navigation, responsive layouts, and accessibility standards.
 
-## Development Standards
+### VI. Visually Pleasing Components
+All visual components should be aesthetically pleasing, with careful attention to colors, typography, spacing, and overall user experience to create engaging and professional interfaces.
 
-All code must follow modern language conventions and best practices. Use type hints where available, follow established style guides (PEP 8 for Python, Airbnb for JavaScript, etc.), and maintain consistent code formatting. Dependencies should be minimal and well-maintained.
+## Technology Stack
+The project embraces modern web technologies and tools that support clean code, objective implementation, and visually pleasing designs. Specific technologies are chosen based on project needs but must align with the principles of modernity and maintainability.
 
-## Code Review Process
-
-All code changes require review before merging. Reviews must verify compliance with clean code principles, check for code duplication, ensure proper naming conventions, and validate that complexity is justified. Reviewers should focus on readability and maintainability rather than personal preferences.
+## Development Workflow
+Development follows a clean code-focused workflow: code must pass clean code reviews before merging. Manual testing is conducted for all features. Design reviews ensure modern and visually pleasing components. Changes must justify any deviations from principles.
 
 ## Governance
+This constitution governs all project activities and supersedes other practices. Amendments require clear justification, documentation of impact, and consensus. Compliance is verified through code reviews and manual testing.
 
-This constitution establishes the fundamental principles for code quality and development practices in the AI Home project. All team members are responsible for upholding these principles in their work. Amendments to this constitution require consensus among all active contributors and must maintain or improve code quality standards.
-
-**Version**: 1.0.0 | **Ratified**: 2025-11-04 | **Last Amended**: 2025-11-04
+**Version**: 1.0.0 | **Ratified**: TODO(RATIFICATION_DATE): Original adoption date unknown | **Last Amended**: 2025-11-04

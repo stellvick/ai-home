@@ -1,102 +1,56 @@
-# Research: AI Resource Evaluation System
+# Research Findings: AI Resource Evaluation
 
 **Date**: 2025-11-04
-**Feature**: AI Resource Evaluation System
-**Phase**: 0 (Research & Technical Decisions)
+**Feature**: AI Resource Evaluation
 
-## Technical Decisions
+## Decisions and Rationale
 
-### Frontend Framework & Language
-**Decision**: TypeScript + React 18 + Vite
-**Rationale**: Modern, type-safe development with excellent developer experience. Vite provides fast development and optimized production builds.
-**Alternatives Considered**:
-- Vue.js: Good alternative but React has larger ecosystem for our needs
-- Vanilla JavaScript: Would lack type safety and modern development patterns
+### Technology Stack Selection
+**Decision**: TypeScript 5.0 for both frontend and backend development.  
+**Rationale**: Provides type safety, modern JavaScript features, and aligns with clean code principles by reducing runtime errors and improving maintainability.  
+**Alternatives considered**: Pure JavaScript (rejected for lack of type safety), Python (rejected for web frontend needs).
 
-### UI Framework & Styling
-**Decision**: Tailwind CSS + HeroUI
-**Rationale**: Utility-first CSS approach ensures consistent design system. HeroUI provides high-quality, accessible React components that work seamlessly with Tailwind.
-**Alternatives Considered**:
-- Material-UI: More opinionated design system, heavier bundle
-- Chakra UI: Similar to HeroUI but HeroUI has better Tailwind integration
+### Frontend Framework
+**Decision**: React 18 with TypeScript.  
+**Rationale**: Component-based architecture supports reusable, visually pleasing components; modern and widely adopted for web UIs.  
+**Alternatives considered**: Vue.js (similar capabilities but React has larger ecosystem), Angular (more opinionated, potentially over-complex).
 
-### State Management
-**Decision**: Zustand
-**Rationale**: Lightweight, simple API for global state management. Better developer experience than Context API for complex state needs.
-**Alternatives Considered**:
-- Redux Toolkit: More boilerplate and complexity for our use case
-- Context API: Sufficient but Zustand provides better performance and DX
+### Backend Framework
+**Decision**: Node.js 20 with Express.js.  
+**Rationale**: JavaScript/TypeScript consistency across stack, lightweight for API development, modern async/await support.  
+**Alternatives considered**: Python FastAPI (rejected for stack consistency), Java Spring (rejected for complexity).
 
-### Data Fetching
-**Decision**: React Query (TanStack Query)
-**Rationale**: Excellent caching, background refetching, and error handling for API data. Handles loading states and optimistic updates automatically.
-**Alternatives Considered**:
-- SWR: Similar functionality but React Query has more features
-- Axios + useEffect: Manual implementation would be error-prone
+### Database
+**Decision**: PostgreSQL.  
+**Rationale**: Robust relational database suitable for structured data like resources, evaluations, and conversations; supports JSON for flexible data.  
+**Alternatives considered**: MongoDB (rejected for relational needs), SQLite (rejected for multi-user concurrency).
 
-### Form Validation
-**Decision**: Yup
-**Rationale**: Schema-based validation with excellent TypeScript support. Integrates well with form libraries and provides clear error messages.
-**Alternatives Considered**:
-- Zod: Similar but Yup has more mature ecosystem
-- Manual validation: Error-prone and repetitive
+### Authentication
+**Decision**: JWT-based authentication using existing API.  
+**Rationale**: Specified in requirements, secure and stateless for web applications.  
+**Alternatives considered**: Session-based (rejected for API-first approach), OAuth2 (overkill for simple login).
 
-### Storage & Security
-**Decision**: encrypt-storage for local storage
-**Rationale**: Provides encrypted local storage for sensitive session data while maintaining simple API.
-**Alternatives Considered**:
-- LocalStorage API: No encryption, security risk
-- IndexedDB: Overkill for our simple storage needs
+### UI Theming
+**Decision**: Two themes - Light and Dark modes.  
+**Rationale**: Modern design standard, improves user experience with visual preferences.  
+**Alternatives considered**: Single theme (rejected for lack of customization), multiple color schemes (rejected for simplicity).
 
-### Icons & Utilities
-**Decision**: Lucide React + react-use
-**Rationale**: Lucide provides consistent, beautiful icons. React-use offers battle-tested custom hooks for common patterns.
-**Alternatives Considered**:
-- React Icons: Larger bundle with many icon sets
-- Custom hooks: Would require reinventing proven patterns
+### Configuration Page
+**Decision**: Settings for theme selection and user preferences.  
+**Rationale**: Allows personalization without complexity, aligns with modern app expectations.  
+**Alternatives considered**: No configuration (rejected for user control), extensive settings (rejected for scope).
 
-### Build Tool
-**Decision**: Vite
-**Rationale**: Extremely fast development server, optimized production builds, and excellent TypeScript support out of the box.
-**Alternatives Considered**:
-- Create React App: Slower, less flexible
-- Webpack: More configuration but Vite handles our needs perfectly
+### Testing Approach
+**Decision**: Manual testing with code reviews.  
+**Rationale**: Per constitution, automated tests not required; manual ensures quality without overhead.  
+**Alternatives considered**: Automated unit tests (rejected per constitution), integration tests (rejected per constitution).
 
-## Architecture Patterns
+### Performance Targets
+**Decision**: Login <10s, workflows <30s, chat switching <5s.  
+**Rationale**: Based on spec requirements, ensures responsive user experience.  
+**Alternatives considered**: Tighter targets (rejected as unrealistic), looser targets (rejected for user satisfaction).
 
-### Component Architecture
-**Decision**: Feature-based organization with shared components
-**Rationale**: Pages contain feature-specific logic, components are reusable across features. Maintains separation of concerns while allowing code reuse.
-
-### API Integration Pattern
-**Decision**: Service layer with React Query hooks
-**Rationale**: Clear separation between API calls and React components. React Query handles caching, loading states, and error handling at the hook level.
-
-### State Management Strategy
-**Decision**: Local component state + global Zustand stores
-**Rationale**: Component state for UI concerns, global stores for application state. Keeps state management simple and predictable.
-
-## Performance Considerations
-
-### Bundle Optimization
-**Decision**: Code splitting by routes, lazy loading of components
-**Rationale**: Reduces initial bundle size and improves loading performance. Critical for maintaining sub-2-second chat switching performance.
-
-### Caching Strategy
-**Decision**: React Query for API data, encrypt-storage for session data
-**Rationale**: API responses cached automatically, sensitive session data encrypted locally. Balances performance with security.
-
-## Browser Compatibility
-
-**Decision**: Modern browsers (Chrome, Firefox, Safari, Edge)
-**Rationale**: Allows use of modern JavaScript features and reduces polyfill overhead. Target audience typically uses up-to-date browsers.
-
-## Development Workflow
-
-**Decision**: TypeScript strict mode, ESLint, Prettier
-**Rationale**: Catches errors at compile time, ensures consistent code style, and follows clean code principles from the constitution.
-
-## Security Approach
-
-**Decision**: JWT validation only (as specified in requirements)
-**Rationale**: Minimal security implementation as defined in the specification. JWT tokens validated on each request, no additional encryption or access controls required.
+### Scalability
+**Decision**: Support 100 concurrent users.  
+**Rationale**: Matches spec scale, sufficient for initial deployment.  
+**Alternatives considered**: Higher scale (rejected for premature optimization), lower scale (rejected for spec compliance).
