@@ -1,13 +1,13 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: AI Resource Management and Evaluation
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Branch**: `001-ai-resource-management` | **Date**: 2025-11-04 | **Spec**: specs/001-ai-resource-management/spec.md
+**Input**: Feature specification from `/specs/001-ai-resource-management/spec.md`
 
 **Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-[Extract from feature spec: primary requirement + technical approach from research]
+Build a frontend application to manage and evaluate AI resources (prompts, responses, images) with JWT login, resource registration, evaluation interface, AI chat with multiple models (GPT-4, Claude, grok), themes (Light/Dark), configuration, and filters. Using TypeScript, React 19, Vite, Tailwind 4, HeroUI. Data via external APIs in n8n. Manual testing only.
 
 ## Technical Context
 
@@ -17,17 +17,17 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., manual testing, user acceptance testing or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+## Technical Context
 
-## Constitution Check
+**Language/Version**: TypeScript  
+**Primary Dependencies**: React 19, Vite, Tailwind 4 (@tailwindcss/postcss), HeroUI  
+**Storage**: External API (n8n)  
+**Testing**: Manual testing  
+**Target Platform**: Web browsers  
+**Project Type**: Frontend web application  
+**Performance Goals**: Login within 5s, resource registration within 10s, evaluation saving successful, chat management 100% success rate, theme switching immediate, config load within 3s  
+**Constraints**: Frontend only, no automated tests, modern and objective implementation  
+**Scale/Scope**: Support evaluation of AI resources, chat with 3 models, theme switching, filtered listings## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
@@ -61,39 +61,20 @@ specs/[###-feature]/
 -->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
+### Source Code (repository root)
+
+```text
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+├── components/     # Reusable UI components (using HeroUI)
+├── pages/          # Application pages/screens
+├── services/       # API service functions
+├── hooks/          # Custom React hooks
+├── utils/          # Utility functions
+├── types/          # TypeScript type definitions
+└── styles/         # Global styles and Tailwind config
+```
 
-tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+**Structure Decision**: Frontend-only web application using React with Vite. Components organized by feature, services for API calls, no backend or automated tests.
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real

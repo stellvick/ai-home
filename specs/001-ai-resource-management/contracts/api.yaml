@@ -1,15 +1,12 @@
 openapi: 3.0.3
 info:
-  title: AI Resource Evaluation API
+  title: AI Resource Management API
   version: 1.0.0
-  description: API for managing and evaluating AI resources
+  description: API for managing and evaluating AI resources, chats, and configurations
 
 servers:
-  - url: http://localhost:3000/api
-    description: Development server
-
-security:
-  - bearerAuth: []
+  - url: https://api.n8n.example.com
+    description: n8n API server
 
 paths:
   /auth/login:
@@ -22,13 +19,11 @@ paths:
             schema:
               type: object
               properties:
-                username:
+                token:
                   type: string
-                password:
-                  type: string
+                  description: JWT token
               required:
-                - username
-                - password
+                - token
       responses:
         '200':
           description: Login successful
@@ -37,23 +32,25 @@ paths:
               schema:
                 type: object
                 properties:
-                  token:
-                    type: string
+                  success:
+                    type: boolean
         '401':
-          description: Invalid credentials
+          description: Invalid token
 
   /resources:
     get:
-      summary: Get all resources with filters
+      summary: List AI resources
       parameters:
-        - name: evaluated
-          in: query
-          schema:
-            type: boolean
-        - name: search
+        - name: type
           in: query
           schema:
             type: string
+          description: Filter by resource type
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: Filter by status
       responses:
         '200':
           description: List of resources
@@ -64,13 +61,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/Resource'
     post:
-      summary: Create new resource
+      summary: Create AI resource
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ResourceInput'
+              $ref: '#/components/schemas/Resource'
       responses:
         '201':
           description: Resource created
@@ -79,28 +76,51 @@ paths:
               schema:
                 $ref: '#/components/schemas/Resource'
 
-  /resources/{id}/evaluate:
-    post:
-      summary: Evaluate a resource
+  /resources/{id}/items:
+    get:
+      summary: Get evaluation items for resource
       parameters:
         - name: id
           in: path
           required: true
           schema:
             type: string
+      responses:
+        '200':
+          description: List of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EvaluationItem'
+
+  /evaluations:
+    post:
+      summary: Save evaluation
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EvaluationInput'
+              type: object
+              properties:
+                itemId:
+                  type: string
+                evaluated:
+                  type: boolean
+                notes:
+                  type: string
+              required:
+                - itemId
+                - evaluated
       responses:
-        '200':
+        '201':
           description: Evaluation saved
 
   /chats:
     get:
-      summary: Get all chats
+      summary: List available chats
       responses:
         '200':
           description: List of chats
@@ -110,23 +130,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Chat'
-    post:
-      summary: Create new chat
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ChatInput'
-      responses:
-        '201':
-          description: Chat created
 
-  /chats/{chatId}/conversations:
+  /chats/{id}/conversations:
     get:
-      summary: Get conversations for a chat
+      summary: Get conversations for chat
       parameters:
-        - name: chatId
+        - name: id
           in: path
           required: true
           schema:
@@ -140,23 +149,30 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Conversation'
+
+  /conversations:
     post:
-      summary: Create new conversation
-      parameters:
-        - name: chatId
-          in: path
-          required: true
-          schema:
-            type: string
+      summary: Create conversation
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ConversationInput'
+              type: object
+              properties:
+                chatId:
+                  type: string
+                title:
+                  type: string
+              required:
+                - chatId
       responses:
         '201':
           description: Conversation created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
 
   /conversations/{id}:
     put:
@@ -176,6 +192,8 @@ paths:
               properties:
                 title:
                   type: string
+              required:
+                - title
       responses:
         '200':
           description: Title updated
@@ -196,13 +214,13 @@ paths:
       summary: Get user configuration
       responses:
         '200':
-          description: User config
+          description: Configuration
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Config'
     put:
-      summary: Update user configuration
+      summary: Update configuration
       requestBody:
         required: true
         content:
@@ -211,17 +229,25 @@ paths:
               $ref: '#/components/schemas/Config'
       responses:
         '200':
-          description: Config updated
+          description: Configuration updated
 
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-
   schemas:
     Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        apiConfig:
+          type: object
+      required:
+        - id
+        - name
+        - apiConfig
+
+    EvaluationItem:
       type: object
       properties:
         id:
@@ -230,39 +256,12 @@ components:
           type: string
         description:
           type: string
-        api_endpoint:
-          type: string
         evaluated:
           type: boolean
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-
-    ResourceInput:
-      type: object
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        api_endpoint:
-          type: string
       required:
+        - id
         - title
-        - api_endpoint
-
-    EvaluationInput:
-      type: object
-      properties:
-        rating:
-          type: integer
-          minimum: 1
-          maximum: 5
-        comments:
-          type: string
+        - evaluated
 
     Chat:
       type: object
@@ -271,16 +270,8 @@ components:
           type: string
         name:
           type: string
-        created_at:
-          type: string
-          format: date-time
-
-    ChatInput:
-      type: object
-      properties:
-        name:
-          type: string
       required:
+        - id
         - name
 
     Conversation:
@@ -288,7 +279,7 @@ components:
       properties:
         id:
           type: string
-        chat_id:
+        chatId:
           type: string
         title:
           type: string
@@ -296,28 +287,23 @@ components:
           type: array
           items:
             type: object
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-
-    ConversationInput:
-      type: object
-      properties:
-        title:
-          type: string
-        messages:
-          type: array
-          items:
-            type: object
+            properties:
+              role:
+                type: string
+              content:
+                type: string
+              timestamp:
+                type: string
+                format: date-time
       required:
-        - messages
+        - id
+        - chatId
 
     Config:
       type: object
       properties:
         theme:
           type: string
-          enum: [light, dark]
+          enum: [Light, Dark]
+      required:
+        - theme
