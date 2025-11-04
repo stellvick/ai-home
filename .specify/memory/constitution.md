@@ -15,6 +15,9 @@ Sync Impact Report:
 ### Clean Code
 Code must adhere to clean code principles: readable, maintainable, following SOLID, DRY, and other best practices. Automated tests are not required.
 
+### Documentation
+If a package documentation link is presented it needs to be used.
+
 ### Modern Frontend
 Utilize modern frontend technologies and frameworks. The project is frontend-only, focusing on contemporary web development practices.
 

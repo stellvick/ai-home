@@ -1,0 +1,211 @@
+openapi: 3.0.3
+info:
+  title: AI Home Evaluation API
+  version: 1.0.0
+  description: Manage AI response evaluations
+
+servers:
+  - url: https://n8n.stellvick.fun/webhook
+    description: n8n evaluation webhook
+
+paths:
+  /resources/{resourceId}/responses:
+    get:
+      summary: Get responses for evaluation
+      description: Fetch all chat responses from a resource for evaluation
+      parameters:
+        - name: resourceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: conversation_id
+          in: query
+          schema:
+            type: string
+          description: Filter by conversation
+        - name: evaluated
+          in: query
+          schema:
+            type: boolean
+          description: Filter by evaluation status
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of responses to evaluate
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Response'
+        '404':
+          description: Resource not found
+
+  /evaluations:
+    get:
+      summary: List evaluations
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: resource_id
+          in: query
+          schema:
+            type: string
+        - name: conversation_id
+          in: query
+          schema:
+            type: string
+        - name: evaluated
+          in: query
+          schema:
+            type: boolean
+          default: false
+      responses:
+        '200':
+          description: List of evaluations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Evaluation'
+
+    post:
+      summary: Create or update evaluation
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationInput'
+      responses:
+        '201':
+          description: Evaluation created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Evaluation'
+        '200':
+          description: Evaluation updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Evaluation'
+
+  /evaluations/{evaluationId}:
+    get:
+      summary: Get evaluation details
+      parameters:
+        - name: evaluationId
+          in: path
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Evaluation details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Evaluation'
+
+    delete:
+      summary: Delete evaluation
+      parameters:
+        - name: evaluationId
+          in: path
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: Evaluation deleted
+
+components:
+  schemas:
+    Response:
+      type: object
+      required:
+        - id
+        - conversation_id
+        - content
+      properties:
+        id:
+          type: string
+        conversation_id:
+          type: string
+        content:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+
+    Evaluation:
+      type: object
+      required:
+        - id
+        - resource_id
+        - conversation_id
+        - response_id
+        - evaluated
+      properties:
+        id:
+          type: string
+        resource_id:
+          type: string
+        conversation_id:
+          type: string
+        response_id:
+          type: string
+        title:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 1000
+        evaluated:
+          type: boolean
+          default: false
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    EvaluationInput:
+      type: object
+      required:
+        - resource_id
+        - conversation_id
+        - response_id
+      properties:
+        resource_id:
+          type: string
+        conversation_id:
+          type: string
+        response_id:
+          type: string
+        title:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 1000
+        evaluated:
+          type: boolean
+          default: false
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

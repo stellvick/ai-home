@@ -1,8 +1,8 @@
-# Specification Quality Checklist: AI Resource Management and Evaluation
+# Specification Quality Checklist: AI Home System
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2025-11-04
-**Feature**: [Link to spec.md](spec.md)
+**Feature**: specs/001-ai-home-system/spec.md
 
 ## Content Quality
 
@@ -31,4 +31,4 @@
 
 ## Notes
 
-- All quality checks pass. Specification is ready for planning phase.
+All items pass. Specification is ready for planning.
