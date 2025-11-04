@@ -3,10 +3,8 @@
 Auto-generated from all feature plans. Last updated: 2025-11-04
 
 ## Active Technologies
-- TypeScrip + React 19, Vite, Tailwind 4 (@tailwindcss/postcss), HeroUI (001-ai-resource-management)
-- External API (n8n) (001-ai-resource-management)
 
-- TypeScript 5.0 + React 18, Node.js 20, Express.js (001-ai-resource-eval)
+- TypeScrip + React 19, Vite, Tailwind 4 (@tailwindcss/postcss), HeroUI, react-query, yup, zustand, encrypt-storage, react-use, lucide-reac (001-ai-resource-management)
 
 ## Project Structure
 
@@ -17,16 +15,15 @@ tests/
 
 ## Commands
 
-npm test && npm run lint
+# Add commands for TypeScrip
 
 ## Code Style
 
-TypeScript 5.0: Follow standard conventions
+TypeScrip: Follow standard conventions
 
 ## Recent Changes
-- 001-ai-resource-management: Added TypeScrip + React 19, Vite, Tailwind 4 (@tailwindcss/postcss), HeroUI
 
-- 001-ai-resource-eval: Added TypeScript 5.0 + React 18, Node.js 20, Express.js
+- 001-ai-resource-management: Added TypeScrip + React 19, Vite, Tailwind 4 (@tailwindcss/postcss), HeroUI, react-query, yup, zustand, encrypt-storage, react-use, lucide-reac
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->

@@ -1,9 +1,14 @@
-# Tasks: AI Resource Management and Evaluation
+---
+
+description: "Task list template for feature implementation"
+---
+
+# Tasks: AI Resource Management
 
 **Input**: Design documents from `/specs/001-ai-resource-management/`
-**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/, quickstart.md
+**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Tests**: Tests are OPTIONAL - not included as not requested in specification.
+**Tests**: Tests are OPTIONAL - not included as automated tests are not required per constitution.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -15,19 +20,16 @@
 
 ## Path Conventions
 
-- **Frontend**: `src/` at repository root
-- Adjust based on plan.md structure
+- **Frontend project**: `src/` at repository root with components/, pages/, services/, stores/, etc.
 
 ## Phase 1: Setup (Shared Infrastructure)
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create Vite + React + TypeScript project structure
-- [ ] T002 [P] Install core dependencies: React 19, TypeScript, Vite
-- [ ] T003 [P] Install UI dependencies: HeroUI, Tailwind CSS 4, @tailwindcss/postcss
-- [ ] T004 Configure Tailwind CSS with PostCSS in vite.config.ts
-- [ ] T005 Setup TypeScript configuration in tsconfig.json
-- [ ] T006 Create project directory structure per plan.md
+- [ ] T001 Initialize Vite project with React 19 and TypeScript
+- [ ] T002 Install all dependencies (React 19, Vite, Tailwind 4, HeroUI, react-query, yup, zustand, encrypt-storage, react-use, lucide-react)
+- [ ] T003 Configure Tailwind CSS with @tailwindcss/postcss
+- [ ] T004 Setup project structure (src/components, src/pages, src/services, src/stores, src/hooks, src/utils, src/types, src/lib)
 
 ---
 
@@ -37,118 +39,104 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T007 Create API service layer in src/services/api.ts
-- [ ] T008 Setup React Router for navigation in src/App.tsx
-- [ ] T009 [P] Create base layout component in src/components/Layout.tsx
-- [ ] T010 [P] Create header component in src/components/Header.tsx
-- [ ] T011 Implement theme system with CSS variables in src/styles/theme.css
-- [ ] T012 Create authentication context in src/contexts/AuthContext.tsx
-- [ ] T013 Create configuration context in src/contexts/ConfigContext.tsx
+- [ ] T005 Configure environment variables (.env.local with API URLs and secrets)
+- [ ] T006 [P] Setup Zustand stores (auth, theme, resources, chats)
+- [ ] T007 [P] Setup React Query client with default options
+- [ ] T008 [P] Create base API service functions (HTTP client, error handling)
+- [ ] T009 [P] Setup React Router for navigation
+- [ ] T010 [P] Create TypeScript types from data-model.md (User, Resource, Chat, Conversation)
 
-**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
-
----
-
-## Phase 3: User Story 1 - User Login (Priority: P1) 🎯 MVP
-
-**Goal**: Allow users to log in using JWT authentication
-
-**Independent Test**: Can be fully tested by entering JWT token and verifying access to main dashboard
-
-- [ ] T014 [US1] Create login page component in src/pages/Login.tsx
-- [ ] T015 [US1] Implement JWT authentication service in src/services/auth.ts
-- [ ] T016 [US1] Add login route protection in src/App.tsx
-- [ ] T017 [US1] Integrate login with auth context
-
-**Checkpoint**: User Story 1 should be fully functional and independently testable
+**Checkpoint**: Foundation ready - user story implementation can now begin
 
 ---
 
-## Phase 4: User Story 3 - Evaluate AI Resource Items (Priority: P1) 🎯 MVP
+## Phase 3: User Story 1 - User Authentication (Priority: P1) 🎯 MVP
 
-**Goal**: Enable evaluation of AI resource items
+**Goal**: Enable secure user login with JWT token management
 
-**Independent Test**: Can be fully tested by selecting a resource, fetching items, evaluating one item, and verifying evaluation is saved
+**Independent Test**: Login with valid credentials, verify JWT storage and dashboard access
 
-- [ ] T018 [US3] Create resource selection component in src/components/ResourceSelector.tsx
-- [ ] T019 [US3] Create evaluation item component in src/components/EvaluationItem.tsx
-- [ ] T020 [US3] Create evaluation list component in src/components/EvaluationList.tsx
-- [ ] T021 [US3] Implement evaluation API service in src/services/evaluation.ts
-- [ ] T022 [US3] Create evaluation page in src/pages/Evaluation.tsx
-- [ ] T023 [US3] Add evaluation route in src/App.tsx
+### Implementation for User Story 1
 
-**Checkpoint**: User Stories 1 AND 3 should both work independently
+- [ ] T011 [US1] Create Login page component in src/pages/Login.tsx
+- [ ] T012 [US1] Implement authentication API service in src/services/auth.ts
+- [ ] T013 [US1] Create authentication store with Zustand in src/stores/auth.ts
+- [ ] T014 [US1] Add login form with Yup validation in src/components/LoginForm.tsx
+- [ ] T015 [US1] Implement JWT storage with encrypt-storage in src/lib/storage.ts
+- [ ] T016 [US1] Add authentication guards for protected routes in src/components/AuthGuard.tsx
 
----
-
-## Phase 5: User Story 4 - Manage AI Chats and Conversations (Priority: P1) 🎯 MVP
-
-**Goal**: Provide AI chat interface with conversation management
-
-**Independent Test**: Can be fully tested by selecting a chat, viewing conversations, adding a title to one, and deleting another
-
-- [ ] T024 [US4] Create chat selector component in src/components/ChatSelector.tsx
-- [ ] T025 [US4] Create conversation list component in src/components/ConversationList.tsx
-- [ ] T026 [US4] Create conversation item component in src/components/ConversationItem.tsx
-- [ ] T027 [US4] Implement chat API service in src/services/chat.ts
-- [ ] T028 [US4] Create chat page in src/pages/Chat.tsx
-- [ ] T029 [US4] Add chat route in src/App.tsx
-
-**Checkpoint**: User Stories 1, 3 AND 4 should all work independently
+**Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
 ---
 
-## Phase 6: User Story 2 - Register AI Resource (Priority: P2)
+## Phase 4: User Story 2 - Resource Registration and Evaluation (Priority: P2)
 
-**Goal**: Allow registration of AI resources with API configurations
+**Goal**: Enable registration of AI resources and evaluation of their items
 
-**Independent Test**: Can be fully tested by registering a resource and verifying it appears in the resources list
+**Independent Test**: Register a resource, fetch items, evaluate one item, verify persistence
 
-- [ ] T030 [US2] Create resource registration form in src/components/ResourceForm.tsx
-- [ ] T031 [US2] Create resources list component in src/components/ResourcesList.tsx
-- [ ] T032 [US2] Implement resource API service in src/services/resource.ts
-- [ ] T033 [US2] Create resources management page in src/pages/Resources.tsx
-- [ ] T034 [US2] Add resources route in src/App.tsx
+### Implementation for User Story 2
 
-**Checkpoint**: All user stories should be independently functional
+- [ ] T017 [US2] Create Resources page component in src/pages/Resources.tsx
+- [ ] T018 [US2] Implement resource API services in src/services/resources.ts
+- [ ] T019 [US2] Create resources store with Zustand in src/stores/resources.ts
+- [ ] T020 [US2] Add resource registration form in src/components/ResourceForm.tsx
+- [ ] T021 [US2] Create evaluation components in src/components/EvaluationForm.tsx
+- [ ] T022 [US2] Implement item fetching and display in src/components/ResourceItems.tsx
+- [ ] T023 [US2] Add filters for resource listings in src/components/ResourceFilters.tsx
 
----
-
-## Phase 7: User Story 5 - Select UI Themes (Priority: P3)
-
-**Goal**: Enable theme switching between Light and Dark
-
-**Independent Test**: Can be fully tested by selecting a theme and verifying UI changes
-
-- [ ] T035 [US5] Create theme selector component in src/components/ThemeSelector.tsx
-- [ ] T036 [US5] Integrate theme switching with config context
-- [ ] T037 [US5] Add theme selector to header component
+**Checkpoint**: At this point, User Story 2 should be fully functional and testable independently
 
 ---
 
-## Phase 8: User Story 6 - Access Configuration Page (Priority: P3)
+## Phase 5: User Story 3 - AI Chat Interface (Priority: P3)
 
-**Goal**: Provide configuration page for app settings
+**Goal**: Provide interface for accessing multiple AI chats and managing conversations
 
-**Independent Test**: Can be fully tested by navigating to configuration page and verifying it loads
+**Independent Test**: Select a chat, view conversations, add title to one, delete another
 
-- [ ] T038 [US6] Create configuration page in src/pages/Config.tsx
-- [ ] T039 [US6] Implement configuration persistence in config context
-- [ ] T040 [US6] Add configuration route in src/App.tsx
+### Implementation for User Story 3
+
+- [ ] T024 [US3] Create Chat page component in src/pages/Chat.tsx
+- [ ] T025 [US3] Implement chat API services in src/services/chats.ts
+- [ ] T026 [US3] Create chats store with Zustand in src/stores/chats.ts
+- [ ] T027 [US3] Add chat selection UI in src/components/ChatSelector.tsx
+- [ ] T028 [US3] Create conversation list component in src/components/ConversationList.tsx
+- [ ] T029 [US3] Implement conversation title editing in src/components/ConversationTitle.tsx
+- [ ] T030 [US3] Add conversation deletion functionality in src/components/ConversationActions.tsx
+- [ ] T031 [US3] Add filters for conversation listings in src/components/ConversationFilters.tsx
+
+**Checkpoint**: At this point, User Story 3 should be fully functional and testable independently
 
 ---
 
-## Phase 9: Polish & Cross-Cutting Concerns
+## Phase 6: User Story 4 - Themes and Configuration (Priority: P4)
+
+**Goal**: Provide theme switching and configuration options
+
+**Independent Test**: Switch between Light and Dark themes, verify persistence
+
+### Implementation for User Story 4
+
+- [ ] T032 [US4] Create Configuration page component in src/pages/Config.tsx
+- [ ] T033 [US4] Implement theme store with Zustand in src/stores/theme.ts
+- [ ] T034 [US4] Add theme switching component in src/components/ThemeSwitcher.tsx
+- [ ] T035 [US4] Configure Light and Dark themes in src/styles/themes.css
+- [ ] T036 [US4] Add theme persistence to localStorage in src/hooks/useTheme.ts
+
+**Checkpoint**: At this point, User Story 4 should be fully functional and testable independently
+
+---
+
+## Phase 7: Polish & Cross-Cutting Concerns
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T041 [P] Add filter functionality to resources list in src/components/ResourcesList.tsx
-- [ ] T042 [P] Add filter functionality to conversations list in src/components/ConversationList.tsx
-- [ ] T043 Implement responsive design across all components
-- [ ] T044 Add global error handling and user feedback
-- [ ] T045 Optimize component performance with React.memo
-- [ ] T046 Add loading states and skeletons
-- [ ] T047 Final styling and visual polish
+- [ ] T037 [P] Add responsive design checks and mobile optimizations
+- [ ] T038 [P] Code cleanup and refactoring for clean code principles
+- [ ] T039 [P] Performance optimizations (lazy loading, memoization)
+- [ ] T040 [P] Update README.md and documentation
+- [ ] T041 [P] Run quickstart.md validation and manual testing
 
 ---
 
@@ -158,65 +146,69 @@
 
 - **Setup (Phase 1)**: No dependencies - can start immediately
 - **Foundational (Phase 2)**: Depends on Setup completion - BLOCKS all user stories
-- **User Stories (Phase 3-8)**: All depend on Foundational phase completion
-  - User stories can then proceed in parallel (if staffed)
-  - Or sequentially in priority order (P1 → P2 → P3)
-- **Polish (Phase 9)**: Depends on all desired user stories being complete
+- **User Stories (Phase 3-6)**: All depend on Foundational phase completion
+  - User stories can proceed in parallel after Foundational
+  - Or sequentially in priority order (P1 → P2 → P3 → P4)
+- **Polish (Phase 7)**: Depends on all desired user stories being complete
 
 ### User Story Dependencies
 
-- **User Story 1 (P1)**: Can start after Foundational (Phase 2) - No dependencies on other stories
-- **User Story 3 (P1)**: Can start after Foundational (Phase 2) - No dependencies on other stories
-- **User Story 4 (P1)**: Can start after Foundational (Phase 2) - No dependencies on other stories
-- **User Story 2 (P2)**: Can start after Foundational (Phase 2) - No dependencies on other stories
-- **User Story 5 (P3)**: Can start after Foundational (Phase 2) - No dependencies on other stories
-- **User Story 6 (P3)**: Can start after Foundational (Phase 2) - No dependencies on other stories
+- **User Story 1 (P1)**: Can start after Foundational - No dependencies on other stories
+- **User Story 2 (P2)**: Can start after Foundational - Independent of other stories
+- **User Story 3 (P3)**: Can start after Foundational - Independent of other stories
+- **User Story 4 (P4)**: Can start after Foundational - Independent of other stories
 
 ### Within Each User Story
 
-- Components before pages
 - API services before components
-- Routes added last in each story
+- Stores before components that use them
+- Base components before page components
+- Core functionality before advanced features
 
 ### Parallel Opportunities
 
 - All Setup tasks marked [P] can run in parallel
-- All Foundational tasks marked [P] can run in parallel (within Phase 2)
-- Once Foundational phase completes, all user stories can start in parallel (if team capacity allows)
-- Components within a story marked [P] can run in parallel
-- Different user stories can be worked on in parallel by different team members
+- All Foundational tasks marked [P] can run in parallel
+- Once Foundational completes, all user stories can start in parallel
+- Within each story, API services and stores can be parallel
+- Different user stories can be worked on in parallel by different developers
 
-### Parallel Example: User Story 3
+---
+
+## Parallel Example: User Story 2
 
 ```bash
-# Launch all components for User Story 3 together:
-Task: "Create resource selection component in src/components/ResourceSelector.tsx"
-Task: "Create evaluation item component in src/components/EvaluationItem.tsx"
-Task: "Create evaluation list component in src/components/EvaluationList.tsx"
+# Launch foundational setup together:
+Task: "Setup Zustand stores (auth, theme, resources, chats)"
+Task: "Setup React Query client with default options"
+Task: "Create base API service functions (HTTP client, error handling)"
+
+# Launch User Story 2 components together:
+Task: "Create Resources page component in src/pages/Resources.tsx"
+Task: "Add resource registration form in src/components/ResourceForm.tsx"
+Task: "Create evaluation components in src/components/EvaluationForm.tsx"
 ```
 
 ---
 
 ## Implementation Strategy
 
-### MVP First (User Stories 1, 3, 4 Only)
+### MVP First (User Story 1 Only)
 
 1. Complete Phase 1: Setup
 2. Complete Phase 2: Foundational (CRITICAL - blocks all stories)
-3. Complete Phase 3: User Story 1 (Login)
-4. Complete Phase 4: User Story 3 (Evaluation)
-5. Complete Phase 5: User Story 4 (AI Chat)
-6. **STOP and VALIDATE**: Test all three stories independently
-7. Deploy/demo if ready
+3. Complete Phase 3: User Story 1
+4. **STOP and VALIDATE**: Test User Story 1 independently (login flow)
+5. Deploy/demo if ready
 
 ### Incremental Delivery
 
 1. Complete Setup + Foundational → Foundation ready
-2. Add User Story 1 → Test independently → Deploy/Demo (Basic login)
-3. Add User Story 3 → Test independently → Deploy/Demo (Login + Evaluation)
-4. Add User Story 4 → Test independently → Deploy/Demo (Login + Evaluation + Chat)
-5. Add remaining stories incrementally
-6. Each story adds value without breaking previous stories
+2. Add User Story 1 → Test independently → Deploy/Demo (MVP!)
+3. Add User Story 2 → Test independently → Deploy/Demo
+4. Add User Story 3 → Test independently → Deploy/Demo
+5. Add User Story 4 → Test independently → Deploy/Demo
+6. Complete Polish → Final release
 
 ### Parallel Team Strategy
 
@@ -224,9 +216,10 @@ With multiple developers:
 
 1. Team completes Setup + Foundational together
 2. Once Foundational is done:
-   - Developer A: User Story 1 (Login)
-   - Developer B: User Story 3 (Evaluation)
-   - Developer C: User Story 4 (AI Chat)
+   - Developer A: User Story 1 (Authentication)
+   - Developer B: User Story 2 (Resources)
+   - Developer C: User Story 3 (Chat)
+   - Developer D: User Story 4 (Themes)
 3. Stories complete and integrate independently
 
 ---

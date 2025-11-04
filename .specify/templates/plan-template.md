@@ -20,7 +20,7 @@
 **Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
 **Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
 **Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., manual testing, user acceptance testing or NEEDS CLARIFICATION]  
+**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
 **Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
 **Project Type**: [single/web/mobile - determines source structure]  
 **Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
@@ -31,12 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- Code must adhere to clean code principles
-- The project must be modern and objective
-- Automated tests are not required; manual testing ensures quality
-- User interfaces must follow modern design principles
-- Visual components must be aesthetically pleasing
-- The project is frontend-only
+- Code must follow clean code principles (meaningful names, small functions, single responsibility, DRY)
+- Design must employ modern patterns suitable for frontend development
+- Project must remain frontend-only (no backend components)
+- Implementation must be objective and avoid unnecessary complexity
+- UI components must prioritize visual appeal and usability
 
 ## Project Structure
 

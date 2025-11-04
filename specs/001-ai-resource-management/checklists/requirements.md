@@ -1,4 +1,4 @@
-# Specification Quality Checklist: AI Resource Management and Evaluation
+# Specification Quality Checklist: AI Resource Management
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2025-11-04

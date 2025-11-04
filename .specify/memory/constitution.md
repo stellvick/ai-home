@@ -1,42 +1,38 @@
 <!--
-Sync Impact Report:
-- Version change: 1.0.0 → 1.1.0
-- List of modified principles: II. Modern Technologies → II. Modern and Objective Project, III. Objective Implementation removed (merged), IV. Manual Testing Sufficiency → III. Manual Testing Sufficiency, V. Modern Design → IV. Modern Design, VI. Visually Pleasing Components → V. Visually Pleasing Components, added VI. Frontend Only
-- Added sections: None
-- Removed sections: None
-- Templates requiring updates: plan-template.md (update Constitution Check to reflect new principles), spec-template.md (no changes), tasks-template.md (no changes)
-- Follow-up TODOs: None
+Sync Impact Report
+Version change: none → 1.0.0
+Modified principles: All principles added (Clean Code, Modern Design, Frontend-Only, Objective Implementation, Visually Pleasing Components)
+Added sections: Technology Stack, Development Workflow
+Removed sections: none
+Templates requiring updates: ✅ updated - plan-template.md (Constitution Check), spec-template.md (testing section)
+Follow-up TODOs: none
 -->
-
 # AI Home Constitution
 
 ## Core Principles
 
 ### I. Clean Code
-All code must adhere to clean code principles: readable, maintainable, follow DRY (Don't Repeat Yourself), SOLID principles, use meaningful names, keep functions small and focused, and avoid code smells.
+All code must adhere to clean code principles: use meaningful variable and function names, write small and focused functions, follow single responsibility principle, eliminate code duplication, and maintain readability. Code reviews must enforce these standards.
 
-### II. Modern and Objective Project
-The project must utilize modern technologies and maintain objective, clear, and concise implementations without unnecessary complexity or verbosity.
+### II. Modern Design
+Employ modern design patterns and architectural approaches suitable for frontend development. Use component-based architecture, reactive programming where appropriate, and follow current best practices for maintainable and scalable code.
 
-### III. Manual Testing Sufficiency
-Automated tests are not required for this project. Quality assurance is achieved through manual testing, thorough code reviews, and adherence to clean code standards.
+### III. Frontend-Only
+This project is strictly frontend-only. No backend services, APIs, or server-side logic shall be implemented. All functionality must be achievable through client-side technologies.
 
-### IV. Modern Design
-User interfaces must follow modern design principles, including minimalism, intuitive navigation, responsive layouts, and accessibility standards.
+### IV. Objective Implementation
+Implement features in a straightforward, objective manner. Avoid over-engineering, unnecessary abstractions, or speculative features. Focus on delivering value with minimal complexity.
 
 ### V. Visually Pleasing Components
-All visual components should be aesthetically pleasing, with careful attention to colors, typography, spacing, and overall user experience to create engaging and professional interfaces.
-
-### VI. Frontend Only
-The project is frontend-only, utilizing only frontend technologies and avoiding backend dependencies to maintain focus and simplicity.
+All user interface components must be designed to be visually appealing, intuitive, and provide a positive user experience. Prioritize usability and aesthetics in component design and layout.
 
 ## Technology Stack
-The project is frontend-only, embracing modern web frontend technologies such as React 18 and TypeScript 5.0 to support clean code, objective implementation, and visually pleasing designs. Specific technologies are chosen based on project needs but must align with the principles of modernity, maintainability, and frontend focus.
+The project must use modern frontend technologies. Recommended stack includes HTML5, CSS3, JavaScript/TypeScript, and a modern framework like React or Vue.js. No backend technologies are permitted.
 
 ## Development Workflow
-Development follows a clean code-focused workflow for frontend development: code must pass clean code reviews before merging. Manual testing is conducted for all features. Design reviews ensure modern and visually pleasing components. Changes must justify any deviations from principles.
+Development follows a code-review process. Features are implemented iteratively with manual testing. Automated tests are not required. Code must pass clean code reviews before merging.
 
 ## Governance
-This constitution governs all project activities and supersedes other practices. Amendments require clear justification, documentation of impact, and consensus. Compliance is verified through code reviews and manual testing.
+This constitution supersedes all other project guidelines. Amendments require consensus among contributors and must be documented. All code changes must comply with the principles outlined herein.
 
-**Version**: 1.1.0 | **Ratified**: TODO(RATIFICATION_DATE): Original adoption date unknown | **Last Amended**: 2025-11-04
+**Version**: 1.0.0 | **Ratified**: 2025-11-04 | **Last Amended**: 2025-11-04

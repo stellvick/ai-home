@@ -1,109 +1,145 @@
-# Data Model: AI Resource Management and Evaluation
+# Data Model: AI Resource Management
 
-**Date**: 2025-11-04
-**Feature**: AI Resource Management and Evaluation
-**Plan**: specs/001-ai-resource-management/plan.md
+**Date**: 2025-11-04  
+**Feature**: AI Resource Management  
+**Phase**: 1 - Design & Contracts  
 
 ## Entities
 
-### AI Resource
-Represents a type of AI content to evaluate (e.g., chat responses, prompts).
+### User
+**Purpose**: Represents authenticated users of the application
 
 **Fields**:
-- id: string (unique identifier)
-- name: string (display name)
-- apiConfig: object (API endpoint, auth details for fetching items)
+- `id`: string (unique identifier from auth API)
+- `username`: string (login username)
+- `token`: string (JWT token, stored encrypted)
 
-**Validation**:
-- name: required, non-empty
-- apiConfig: valid URL, required auth if needed
+**Validation Rules**:
+- `username`: required, min 3 chars, max 50 chars
+- `token`: required when authenticated
 
 **Relationships**:
-- Has many Evaluation Items
+- 1:N with Resource (user can manage multiple resources)
+- 1:N with Chat (user can access multiple chats)
 
-### Evaluation Item
-Individual item to evaluate.
+### Resource
+**Purpose**: Represents AI resources that can be evaluated (prompts, responses, images, etc.)
 
 **Fields**:
-- id: string
-- resourceId: string (foreign key to AI Resource)
-- title: string
-- description: string
-- evaluated: boolean (default false)
+- `id`: string (unique identifier)
+- `apiEndpoint`: string (URL for fetching items)
+- `type`: enum ('prompt', 'response', 'image', 'other')
+- `title`: string (resource title)
+- `description`: string (resource description)
+- `createdDate`: Date (when resource was registered)
+- `evaluationStatus`: enum ('unevaluated', 'approved', 'rejected')
+- `comments`: string (optional evaluation comments)
 
-**Validation**:
-- title: required
-- description: optional
-- evaluated: boolean
+**Validation Rules**:
+- `apiEndpoint`: required, valid URL
+- `type`: required, one of allowed values
+- `title`: required, min 1 char, max 200 chars
+- `description`: required, min 1 char, max 1000 chars
+- `evaluationStatus`: defaults to 'unevaluated'
+- `comments`: optional, max 500 chars
 
 **Relationships**:
-- Belongs to AI Resource
+- N:1 with User (belongs to one user)
 
-### AI Chat
-Different chat types/models.
+**State Transitions**:
+- `unevaluated` → `approved` (with optional comments)
+- `unevaluated` → `rejected` (with optional comments)
+- No transitions from approved/rejected (immutable evaluations)
+
+### Chat
+**Purpose**: Represents different AI chat instances or types
 
 **Fields**:
-- id: string
-- name: string (GPT-4, Claude, grok)
-- apiConfig: object (API details for chat interactions)
+- `id`: string (unique identifier)
+- `name`: string (display name for the chat)
+- `apiEndpoint`: string (URL for chat operations)
 
-**Validation**:
-- name: required, one of [GPT-4, Claude, grok]
+**Validation Rules**:
+- `name`: required, min 1 char, max 100 chars
+- `apiEndpoint`: required, valid URL
 
 **Relationships**:
-- Has many Conversations
+- N:1 with User (user accesses chats)
+- 1:N with Conversation (chat contains multiple conversations)
 
 ### Conversation
-Chat conversation.
+**Purpose**: Represents individual chat conversations within a chat
 
 **Fields**:
-- id: string
-- chatId: string (foreign key to AI Chat)
-- title: string (optional)
-- messages: array of message objects (role, content, timestamp)
+- `id`: string (unique identifier)
+- `chatId`: string (reference to parent chat)
+- `title`: string (optional conversation title)
+- `createdDate`: Date (when conversation was created)
+- `lastUpdated`: Date (last modification time)
 
-**Validation**:
-- title: optional
-- messages: array of valid message objects
+**Validation Rules**:
+- `title`: optional, max 200 chars
+- `chatId`: required, references valid Chat
 
 **Relationships**:
-- Belongs to AI Chat
-
-### Theme
-UI theme options.
-
-**Fields**:
-- id: string
-- name: string (Light, Dark)
-
-**Validation**:
-- name: one of [Light, Dark]
-
-### Configuration
-App settings.
-
-**Fields**:
-- theme: string (current selected theme)
-
-**Validation**:
-- theme: one of [Light, Dark]
-
-## State Transitions
-
-### Evaluation Item
-- Not Evaluated (evaluated: false) → Evaluated (evaluated: true)
-- No undo once evaluated
-
-### Conversation
-- Created → Title added (optional) → Messages added → Deleted
+- N:1 with Chat (belongs to one chat)
 
 ## Data Flow
 
-1. User selects AI Resource
-2. System fetches Evaluation Items via API
-3. User evaluates items, updates evaluated status
-4. System sends evaluation data to API
-5. User selects AI Chat
-6. System loads conversations for selected chat
-7. User manages conversations (add title, delete)
-8. Theme selection persists in configuration
+1. **Authentication**: User logs in, receives JWT, stored in encrypted sessionStorage
+2. **Resource Management**: User registers resources with API details, fetches items for evaluation
+3. **Evaluation**: Items are evaluated as approved/rejected with optional comments, saved via API
+4. **Chat Access**: User selects chats, views conversations, can add titles or delete conversations
+5. **Theming**: Theme preference stored in localStorage (not encrypted, as not sensitive)
+
+## API Data Structures
+
+### Login Request/Response
+```typescript
+interface LoginRequest {
+  username: string;
+  password: string;
+}
+
+interface LoginResponse {
+  token: string;
+  user: {
+    id: string;
+    username: string;
+  };
+}
+```
+
+### Resource Item (for evaluation)
+```typescript
+interface ResourceItem {
+  id: string;
+  title: string;
+  description: string;
+  type: 'prompt' | 'response' | 'image' | 'other';
+}
+```
+
+### Evaluation Submission
+```typescript
+interface EvaluationRequest {
+  resourceId: string;
+  itemId: string;
+  status: 'approved' | 'rejected';
+  comments?: string;
+}
+```
+
+### Chat/Conversation Structures
+```typescript
+interface Chat {
+  id: string;
+  name: string;
+}
+
+interface Conversation {
+  id: string;
+  title?: string;
+  createdDate: string;
+}
+```

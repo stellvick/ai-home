@@ -1,67 +1,76 @@
-# Quickstart: AI Resource Management and Evaluation
+# Quickstart: AI Resource Management
 
-**Date**: 2025-11-04
-**Feature**: AI Resource Management and Evaluation
+**Date**: 2025-11-04  
+**Feature**: AI Resource Management  
+**Phase**: 1 - Design & Contracts  
 
 ## Prerequisites
 
-- Node.js 20+
+- Node.js 18+
 - npm or yarn
-- Access to n8n API endpoints
+- Environment variables configured
 
 ## Installation
 
-1. Clone the repository and navigate to the project root
+1. Clone the repository and checkout the feature branch:
+   ```bash
+   git checkout 001-ai-resource-management
+   ```
+
 2. Install dependencies:
    ```bash
    npm install
    ```
+
 3. Configure environment variables:
-   Create `.env` file with:
+   Create `.env.local` with:
    ```
-   VITE_API_BASE_URL=https://your-n8n-api-url
-   VITE_JWT_SECRET=your-jwt-secret
+   VITE_API_BASE_URL=https://n8n.stellvick.fun/webhook
+   VITE_JWT_SECRET=your_secret_here
    ```
 
 ## Development
 
-1. Start the development server:
-   ```bash
-   npm run dev
-   ```
-2. Open http://localhost:5173 in your browser
+Start the development server:
+```bash
+npm run dev
+```
 
-## Building for Production
+The application will be available at `http://localhost:5173`
+
+## Build for Production
 
 ```bash
 npm run build
 ```
 
-## Usage
+## Key Features
 
-1. **Login**: Enter your JWT token on the login page
-2. **Register Resources**: Add AI resources with their API configurations
-3. **Evaluate Resources**: Select a resource, fetch items, and evaluate them
-4. **AI Chat**: Choose a chat model (GPT-4, Claude, grok), view and manage conversations
-5. **Themes**: Switch between Light and Dark themes in configuration
-6. **Filters**: Use filters on resource and conversation lists
+1. **Login**: Use your credentials to authenticate via JWT
+2. **Resource Management**: Register AI resources and evaluate items
+3. **AI Chat**: Access multiple chats and manage conversations
+4. **Themes**: Switch between Light and Dark themes
+5. **Configuration**: Access settings page
 
 ## API Endpoints
 
-See `contracts/api.yaml` for detailed API specifications.
-
-## Manual Testing
-
-- Test login with valid/invalid JWT
-- Register resources and verify API calls
-- Evaluate items and check data persistence
-- Switch between chat models and manage conversations
-- Change themes and verify persistence
-- Use filters and verify results
+All data is fetched from n8n APIs. Ensure the workflows are active and accessible.
 
 ## Troubleshooting
 
-- Ensure n8n API is running and accessible
-- Check browser console for errors
-- Verify JWT token validity
-- Clear browser cache if theme changes don't apply
+- **Login fails**: Check JWT API availability and credentials
+- **API errors**: Verify n8n webhook URLs and authentication
+- **Build issues**: Ensure all dependencies are installed correctly
+- **Tailwind not working**: Confirm @tailwindcss/postcss is installed and configured
+
+## Manual Testing Checklist
+
+- [ ] Login with valid credentials
+- [ ] Register a new resource
+- [ ] Fetch and evaluate items
+- [ ] Switch between chats
+- [ ] Add titles to conversations
+- [ ] Delete conversations
+- [ ] Change themes
+- [ ] Access configuration page
+- [ ] Verify responsive design on different screen sizes

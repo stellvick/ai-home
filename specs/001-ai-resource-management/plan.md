@@ -1,4 +1,4 @@
-# Implementation Plan: AI Resource Management and Evaluation
+# Implementation Plan: AI Resource Management
 
 **Branch**: `001-ai-resource-management` | **Date**: 2025-11-04 | **Spec**: specs/001-ai-resource-management/spec.md
 **Input**: Feature specification from `/specs/001-ai-resource-management/spec.md`
@@ -7,36 +7,29 @@
 
 ## Summary
 
-Build a frontend application to manage and evaluate AI resources (prompts, responses, images) with JWT login, resource registration, evaluation interface, AI chat with multiple models (GPT-4, Claude, grok), themes (Light/Dark), configuration, and filters. Using TypeScript, React 19, Vite, Tailwind 4, HeroUI. Data via external APIs in n8n. Manual testing only.
-
-## Technical Context
-
-<!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
--->
+Build a frontend-only application for managing and evaluating AI resources (prompts, responses, images) with user authentication, resource registration and evaluation, AI chat interface, themes, and configuration. Technical approach: Use React 19, TypeScript, Vite, Tailwind 4, HeroUI for modern UI, with data fetched via n8n APIs. State management with Zustand, API calls with React Query, validation with Yup, icons with Lucide React, and secure storage with encrypt-storage.
 
 ## Technical Context
 
 **Language/Version**: TypeScript  
-**Primary Dependencies**: React 19, Vite, Tailwind 4 (@tailwindcss/postcss), HeroUI  
-**Storage**: External API (n8n)  
-**Testing**: Manual testing  
-**Target Platform**: Web browsers  
-**Project Type**: Frontend web application  
-**Performance Goals**: Login within 5s, resource registration within 10s, evaluation saving successful, chat management 100% success rate, theme switching immediate, config load within 3s  
-**Constraints**: Frontend only, no automated tests, modern and objective implementation  
-**Scale/Scope**: Support evaluation of AI resources, chat with 3 models, theme switching, filtered listings## Constitution Check
+**Primary Dependencies**: React 19, Vite, Tailwind 4 (@tailwindcss/postcss), HeroUI, react-query, yup, zustand, encrypt-storage, react-use, lucide-react  
+**Storage**: N/A (API-based via n8n)  
+**Testing**: Manual testing (no automated tests per constitution)  
+**Target Platform**: Web browsers (responsive design)  
+**Project Type**: Web application (frontend-only)  
+**Performance Goals**: Login <30s, resource/conversation listings <3s, chat switching <2s, theme changes instant  
+**Constraints**: Frontend-only, modern design with visually pleasing components, objective implementation  
+**Scale/Scope**: Up to 1000 resources per user, multiple chats with conversations
+
+## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- Code must adhere to clean code principles
-- The project must be modern and objective
-- Automated tests are not required; manual testing ensures quality
-- User interfaces must follow modern design principles
-- Visual components must be aesthetically pleasing
-- The project is frontend-only
+- Code must follow clean code principles (meaningful names, small functions, single responsibility, DRY)
+- Design must employ modern patterns suitable for frontend development
+- Project must remain frontend-only (no backend components)
+- Implementation must be objective and avoid unnecessary complexity
+- UI components must prioritize visual appeal and usability
 
 ## Project Structure
 
@@ -53,32 +46,20 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
-
-```text
-### Source Code (repository root)
 
 ```text
 src/
-├── components/     # Reusable UI components (using HeroUI)
-├── pages/          # Application pages/screens
-├── services/       # API service functions
-├── hooks/          # Custom React hooks
-├── utils/          # Utility functions
-├── types/          # TypeScript type definitions
-└── styles/         # Global styles and Tailwind config
+├── components/          # Reusable UI components (HeroUI-based)
+├── pages/              # Page components (Login, Dashboard, Chat, Config)
+├── services/           # API service functions (n8n endpoints)
+├── stores/             # Zustand state management
+├── hooks/              # Custom React hooks (react-use extensions)
+├── utils/              # Utility functions (validation with Yup)
+├── types/              # TypeScript type definitions
+└── lib/                # Library configurations (encrypt-storage)
 ```
 
-**Structure Decision**: Frontend-only web application using React with Vite. Components organized by feature, services for API calls, no backend or automated tests.
-```
-
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: Single frontend project using Vite with modern React structure. Components organized by feature, state managed with Zustand, API calls with React Query.
 
 ## Complexity Tracking
 
