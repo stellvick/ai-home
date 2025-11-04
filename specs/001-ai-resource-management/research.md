@@ -1,119 +1,57 @@
-# Research: AI Resource Management
+# Research: AI Resource Management and Evaluation
 
-**Date**: 2025-11-04  
-**Feature**: AI Resource Management  
-**Phase**: 0 - Outline & Research  
+**Date**: 2025-11-04
+**Feature**: AI Resource Management and Evaluation
+**Purpose**: Resolve technical unknowns and establish best practices for implementation
 
-## Decisions & Research Findings
+## Decisions
 
 ### Technology Stack Selection
-
-**Decision**: Use React 19 with TypeScript, Vite, Tailwind 4, and HeroUI  
-**Rationale**: 
-- React 19 provides the latest features for modern web development
-- TypeScript ensures type safety and better maintainability, aligning with clean code principles
-- Vite offers fast development and build times
-- Tailwind 4 with @tailwindcss/postcss enables utility-first CSS for visually pleasing components
-- HeroUI provides pre-built, accessible components that enhance modern design
-- All choices support frontend-only architecture and objective implementation
-
-**Alternatives Considered**:
-- Vue.js: Rejected due to React's larger ecosystem and better alignment with modern patterns
-- Styled Components: Rejected in favor of Tailwind for simpler styling and better performance
-- SASS/SCSS: Rejected as Tailwind provides sufficient styling capabilities without additional complexity
-
-### State Management
-
-**Decision**: Use Zustand for state management  
-**Rationale**: Lightweight, simple API, good for frontend-only apps, supports clean code principles with minimal boilerplate
-
-**Alternatives Considered**:
-- Redux: Rejected due to complexity and boilerplate, violating objective implementation
-- Context API: Rejected for larger apps where Zustand provides better performance
-
-### API Integration
-
-**Decision**: Use React Query (TanStack Query) for API calls  
-**Rationale**: Excellent for server state management, caching, and error handling in API-driven frontend apps
-
-**Alternatives Considered**:
-- Axios with useEffect: Rejected due to manual state management and caching needs
-- SWR: Similar to React Query but React Query has better ecosystem support
-
-### Form Validation
-
-**Decision**: Use Yup for validation  
-**Rationale**: Schema-based validation that integrates well with React forms and provides clear error messages
-
-**Alternatives Considered**:
-- React Hook Form built-in: Rejected for complex validation needs
-- Joi: Rejected as Yup has better React integration
-
-### Secure Storage
-
-**Decision**: Use encrypt-storage for sensitive data  
-**Rationale**: Provides encrypted local/session storage for JWT tokens, aligning with security requirements
-
-**Alternatives Considered**:
-- Plain localStorage: Rejected due to security concerns
-- Cookies: Rejected as sessionStorage with encryption provides better control
-
-### Icons
-
-**Decision**: Use Lucide React for icons  
-**Rationale**: Modern, consistent icon set that works well with Tailwind and HeroUI
-
-**Alternatives Considered**:
-- Heroicons: Rejected as Lucide provides more variety
-- Font Awesome: Rejected due to bundle size concerns
-
-### Additional Hooks
-
-**Decision**: Use react-use for additional React hooks  
-**Rationale**: Provides useful hooks for common patterns without reinventing the wheel
-
-**Alternatives Considered**:
-- Custom hooks: Rejected to avoid duplication and focus on core features
+**Decision**: Use TypeScript, React 19 (latest), Vite, Tailwind 4 with @tailwindcss/postcss, HeroUI, react-query, yup, zustand, encrypt-storage, react-use, lucide-react
+**Rationale**: User-specified stack for modern frontend development. React 19 provides latest features, Vite for fast development, Tailwind 4 for styling, HeroUI for components, react-query for data fetching, yup for validation, zustand for state, encrypt-storage for secure storage, react-use for utilities, lucide-react for icons. Follows constitution's modern and objective approach.
+**Alternatives Considered**: React 18 with Create React App (rejected for slower build times), older Tailwind versions (rejected for latest features), other UI libraries like Material-UI (rejected for HeroUI's modern design alignment).
 
 ### Tailwind CSS Configuration
+**Decision**: Install and configure @tailwindcss/postcss for PostCSS plugin
+**Rationale**: Tailwind 4 requires separate PostCSS plugin package. Ensures proper CSS processing and avoids installation errors.
+**Alternatives Considered**: Direct tailwindcss PostCSS plugin (deprecated in v4).
 
-**Decision**: Install @tailwindcss/postcss for PostCSS integration  
-**Rationale**: Required for Tailwind 4 compatibility as noted in user instructions
+### Data Management Approach
+**Decision**: Use mock data initially, with functions ready for real n8n API integration
+**Rationale**: Allows immediate development and UI/UX focus without backend dependency. Functions structured for easy API swap.
+**Alternatives Considered**: Develop against real APIs from start (rejected for slower initial progress), local storage only (rejected for API requirement).
 
-**Alternatives Considered**: None - this is the specified requirement
+### Testing Strategy
+**Decision**: Manual testing only, no automated tests
+**Rationale**: Per constitution and user requirements. Focus on clean code and UI/UX validation through manual testing.
+**Alternatives Considered**: Unit tests with Jest (rejected per requirements), integration tests (rejected per requirements).
 
-## Implementation Patterns
+### Authentication Handling
+**Decision**: JWT from n8n API with basic auth, store secret in environment variable
+**Rationale**: Follows user specification for existing API. Environment variable for security.
+**Alternatives Considered**: Local JWT generation (rejected for existing API), session storage (rejected for JWT requirement).
 
-### Authentication Flow
-- JWT stored in sessionStorage using encrypt-storage
-- Automatic token refresh handling
-- Logout on token expiry
+### UI/UX Implementation
+**Decision**: Prioritize modern, visually pleasing components with two themes (light/dark)
+**Rationale**: Constitution requires UI/UX focus. HeroUI provides modern components, Tailwind for styling, themes for personalization.
+**Alternatives Considered**: Custom components (rejected for time, use library), single theme (rejected for user requirement).
 
-### API Error Handling
-- React Query error boundaries
-- User-friendly error messages
-- Retry logic for transient failures
+### State Management
+**Decision**: Zustand for global state, react-query for server state
+**Rationale**: Zustand is lightweight and simple for UI state, react-query handles API data caching and synchronization.
+**Alternatives Considered**: Redux (rejected for complexity), Context API (rejected for less features).
 
-### Theme Implementation
-- CSS variables for Light/Dark themes
-- Zustand store for theme state
-- Instant theme switching
+### Form Validation
+**Decision**: Yup for schema validation
+**Rationale**: Powerful validation library that integrates well with React forms.
+**Alternatives Considered**: Manual validation (rejected for maintainability), other libraries like Joi (rejected for React integration).
 
-### Component Architecture
-- HeroUI components as base
-- Custom components for specific needs
-- Clean separation of concerns
+### Icon Library
+**Decision**: Lucide React for icons
+**Rationale**: Modern, consistent icon set that matches the clean design approach.
+**Alternatives Considered**: Heroicons (similar but Lucide chosen for variety).
 
-## Performance Considerations
-
-- React Query caching for API responses
-- Lazy loading for routes
-- Optimized re-renders with Zustand
-- Tailwind purging for minimal CSS bundle
-
-## Security Measures
-
-- Encrypted storage for tokens
-- Input validation with Yup
-- XSS protection via React
-- Secure API communication (HTTPS assumed)
+### Performance Optimization
+**Decision**: Vite for build tool, lazy loading for components, react-query caching
+**Rationale**: Vite provides fast development and optimized builds. Lazy loading reduces initial bundle size.
+**Alternatives Considered**: Webpack (rejected for slower dev experience).

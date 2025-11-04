@@ -1,130 +1,133 @@
-# Feature Specification: AI Resource Management
+# Feature Specification: AI Resource Management and Evaluation
 
 **Feature Branch**: `001-ai-resource-management`  
 **Created**: 2025-11-04  
 **Status**: Draft  
-**Input**: User description: "Construi uma aplicação responsavel por gerenciar e avaliar recursos de IA Prompts, respostas, imagens, etc. poderam ser avaliados. Recursos necessarios: - Login com JWT a api para criação do JWT ja existe. (Usuário e senha após isso consumir API https://n8n.stellvick.fun/webhook-test/962701ed-f87d-4ec1-b965-ae74259d0041 com basic auth colocar o segredo em um env para ser usado na aplicação) - Cadastro de recursos cada um com sua API especifica por exemplo: Buscar todas respostas de um chat e avaliar elas uma por uma após avaliar devera ser enviado para o banco. Para o objeto a ser avaliado preciso de titulo, descrição e se foi avaliado ou não. - Por ultimo um chat de IA que podera acessar varios chats diferentes o chat devera listar qual chat sera usado listar conversas e permitir adicionar um titulo nas conversas, deletar as conversas. Ao trocar o chat a lista de conversas tambem deve mudar. - Me de dois temas e uma pagina de configuração. - para todas listagens incluir filtros. -Backend não é necessário todas APIs serão criados no n8n - Criar um layout moderno"
+**Input**: User description: "Construi uma aplicação responsavel por gerenciar e avaliar recursos de IA Prompts, respostas, imagens, etc. poderam ser avaliados.
 
-## User Scenarios & Acceptance Criteria *(mandatory)*
+Recursos necessarios:
+- Login com JWT a api para criação do JWT ja existe. (Usuário e senha após isso consumir API https://n8n.stellvick.fun/webhook/962701ed-f87d-4ec1-b965-ae74259d0041 com basic auth colocar o segredo do JWT em um env para ser usado na aplicação)
+- Cadastro de recursos cada um com sua API especifica por exemplo: Buscar todas respostas de um chat e avaliar elas uma por uma após avaliar devera ser enviado para o banco. Para o objeto a ser avaliado preciso de titulo, descrição e se foi avaliado ou não.
+- A pagina que contem o chat de IA que podera acessar varios chats diferentes o chat devera listar qual chat sera usado listar conversas e permitir adicionar um titulo nas conversas, deletar as conversas. Ao trocar o chat a lista de conversas tambem deve mudar.
+- Me de dois temas e uma pagina de configuração.
+- para todas listagens incluir filtros.
+-Backend não é necessário todas APIs serão criados no n8n
+- Criar um layout moderno UI/UX tem que ser feito e seguir a constituição moderno e visualmente agradável. - Inicialmente um mock pode ser usado para tudo menos a pagina de login."
 
-### User Story 1 - User Authentication (Priority: P1)
+## User Scenarios & Testing *(optional)*
 
-As a user, I want to log in to the application using my username and password to access the AI resource management features.
+### User Story 1 - User Login (Priority: P1)
 
-**Why this priority**: Authentication is fundamental for secure access to all features.
+User logs into the application using username and password to obtain JWT token for authenticated access.
 
-**Independent Test**: Can be fully tested by attempting login with valid/invalid credentials and verifying access to the dashboard.
+**Why this priority**: Login is the entry point for all other features, ensuring secure access.
+
+**Independent Test**: Can be fully tested by attempting login with valid/invalid credentials and verifying access to protected areas.
 
 **Acceptance Scenarios**:
 
-1. **Given** a user has valid credentials, **When** they enter username and password and submit, **Then** they receive a JWT token and are redirected to the main dashboard.
-2. **Given** a user has invalid credentials, **When** they attempt to log in, **Then** they see an error message and remain on the login page.
-3. **Given** a logged-in user, **When** they access protected features, **Then** the JWT is validated and access is granted.
+1. **Given** user has valid credentials, **When** they enter username and password and submit, **Then** they receive JWT token and access the main dashboard.
+2. **Given** user has invalid credentials, **When** they attempt login, **Then** they see an error message and remain on login page.
 
 ---
 
-### User Story 2 - Resource Registration and Evaluation (Priority: P2)
+### User Story 2 - Manage AI Resources (Priority: P2)
 
-As a user, I want to register AI resources (like chat responses) with their specific APIs, fetch items to evaluate, and save evaluation results.
+User can view, register, and manage AI resources (prompts, responses, images) with filtering capabilities.
 
-**Why this priority**: Resource management and evaluation is the core functionality of the application.
+**Why this priority**: Core functionality for organizing AI-generated content.
 
-**Independent Test**: Can be fully tested by registering a resource, fetching items, evaluating one, and verifying it's saved.
+**Independent Test**: Can be tested by registering a new resource, viewing the list with filters, and verifying data persistence.
 
 **Acceptance Scenarios**:
 
-1. **Given** a user is logged in, **When** they register a new resource with API details, **Then** the resource is saved and appears in the resource list.
-2. **Given** a registered resource, **When** the user fetches items to evaluate, **Then** a list of unevaluated items is displayed with title and description.
-3. **Given** an item to evaluate, **When** the user selects Approve or Reject and optionally adds comments, then submits, **Then** the item is marked as evaluated with the decision and comments saved to the database.
-4. **Given** a list of resources, **When** the user applies filters, **Then** the list is filtered accordingly.
+1. **Given** user is logged in, **When** they navigate to resources page, **Then** they see a filtered list of all resources.
+2. **Given** user wants to add a resource, **When** they provide title, description, and API details, **Then** the resource is saved and appears in the list.
 
 ---
 
-### User Story 3 - AI Chat Interface (Priority: P3)
+### User Story 3 - Evaluate AI Resources (Priority: P2)
 
-As a user, I want to access an AI chat interface that supports multiple chats, view conversations, add titles, delete conversations, and switch between chats.
+User can evaluate individual AI resources, marking them as evaluated and storing results.
 
-**Why this priority**: Chat functionality provides interactive AI capabilities.
+**Why this priority**: Key value proposition for assessing AI output quality.
 
-**Independent Test**: Can be fully tested by selecting a chat, viewing conversations, titling one, deleting another, and switching chats.
+**Independent Test**: Can be tested by selecting a resource, performing evaluation, and verifying the evaluation is saved.
 
 **Acceptance Scenarios**:
 
-1. **Given** the user is in the chat interface, **When** they select a chat from the list, **Then** the conversations for that chat are displayed.
-2. **Given** a conversation list, **When** the user adds a title to a conversation, **Then** the title is saved and displayed.
-3. **Given** a conversation, **When** the user deletes it, **Then** it is removed from the list.
-4. **Given** multiple chats, **When** the user switches to another chat, **Then** the conversation list updates to show the new chat's conversations.
-5. **Given** a conversation list, **When** the user applies filters, **Then** the list is filtered accordingly.
+1. **Given** user selects an unevaluated resource, **When** they complete evaluation, **Then** the resource is marked as evaluated and results are stored.
+2. **Given** user views evaluated resources, **When** they filter by evaluation status, **Then** only matching resources are shown.
 
 ---
 
-### User Story 4 - Themes and Configuration (Priority: P4)
+### User Story 4 - AI Chat Interface (Priority: P3)
 
-As a user, I want to select from two available themes and access a configuration page for app settings.
+User can engage in AI conversations across multiple chats, managing conversations within each chat.
 
-**Why this priority**: Personalization enhances user experience.
+**Why this priority**: Interactive AI communication feature.
 
-**Independent Test**: Can be fully tested by switching themes and verifying the UI changes, and accessing config page.
+**Independent Test**: Can be tested by selecting a chat, viewing conversations, adding titles, and deleting conversations.
 
 **Acceptance Scenarios**:
 
-1. **Given** the user is on the config page, **When** they select a theme (Light or Dark), **Then** the application UI updates to reflect the chosen theme.
-2. **Given** two themes are available (Light and Dark), **When** the user switches between them, **Then** the visual styling changes appropriately.
+1. **Given** user selects a chat, **When** they view conversations, **Then** the list updates to show conversations for that chat.
+2. **Given** user wants to manage a conversation, **When** they add a title or delete it, **Then** the changes are reflected immediately.
 
-## Clarifications
+---
 
-### Session 2025-11-04
+### User Story 5 - Theme and Configuration (Priority: P3)
 
-- Q: What evaluation method should be used for AI resources (prompts, responses, images)? → A: Approve/Reject with optional comments
-- Q: How should JWT tokens be stored in the frontend application? → A: Session storage
-- Q: What is the expected maximum number of resources a user can manage? → A: Hundreds (100-1000)
-- Q: What additional attributes should the Resource entity have beyond title, description, and evaluation status? → A: API endpoint, type, created date
-- Q: What should the two visual themes be called? → A: Light and Dark
+User can switch between two themes and access configuration settings.
+
+**Why this priority**: Personalization and usability enhancement.
+
+**Independent Test**: Can be tested by changing themes and verifying visual changes, and accessing configuration page.
+
+**Acceptance Scenarios**:
+
+1. **Given** user accesses settings, **When** they select a theme, **Then** the application appearance changes accordingly.
+2. **Given** user navigates to configuration, **When** they modify settings, **Then** changes are applied and persisted.
 
 ### Edge Cases
 
-- What happens when the JWT API is unavailable during login?
-- How does the system handle API failures when fetching resources or conversations?
-- What if an item evaluation fails to save to the database?
-- How are invalid or corrupted data from APIs handled?
-- What happens if a user tries to access features without authentication?
-- What happens if the JWT token expires during use?
+- What happens when JWT token expires during session?
+- How does system handle network errors when calling n8n APIs?
+- What if user tries to evaluate already evaluated resource?
+- How to handle empty chat or resource lists?
+- What happens if theme change fails to apply?
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **FR-001**: System MUST allow users to log in with username and password, obtain JWT from existing API, and use it for authenticated requests.
-- **FR-002**: System MUST consume the specified n8n API with basic auth using a secret from environment variables.
-- **FR-003**: System MUST enable registration of AI resources, each with specific API endpoints for fetching evaluable items.
-- **FR-004**: System MUST fetch items from registered resources, displaying title, description, and evaluation status.
-- **FR-005**: System MUST allow users to evaluate items with Approve/Reject decision and optional comments, then save the results to the database.
-- **FR-006**: System MUST provide an AI chat interface supporting multiple chats.
-- **FR-007**: System MUST list available chats and allow selection of active chat.
-- **FR-008**: System MUST display conversations for the selected chat, with options to add titles and delete conversations.
-- **FR-009**: System MUST update conversation list when switching between chats.
-- **FR-010**: System MUST provide Light and Dark visual themes for the application.
-- **FR-011**: System MUST include a configuration page for theme selection and other settings.
-- **FR-012**: System MUST include filters on all listings (resources, conversations, etc.).
-- **FR-013**: System MUST have a modern, responsive layout.
-- **FR-014**: System MUST store JWT tokens securely in session storage.
+- **FR-001**: System MUST allow users to login with username/password and obtain JWT via n8n API
+- **FR-002**: System MUST store JWT secret in environment variable for API authentication
+- **FR-003**: System MUST display a list of AI resources with filtering capabilities
+- **FR-004**: System MUST allow registering new resources with title, description, evaluation status, and specific API endpoints
+- **FR-005**: System MUST enable evaluation of individual resources and save results to database via n8n APIs
+- **FR-006**: System MUST provide AI chat interface with ability to select different chats
+- **FR-007**: System MUST list conversations per selected chat, allow adding titles, and deleting conversations
+- **FR-008**: System MUST update conversation list when switching between chats
+- **FR-009**: System MUST provide two visual themes (e.g., light and dark)
+- **FR-010**: System MUST include a configuration page for user settings
+- **FR-011**: System MUST include filters on all listing pages (resources, chats, conversations)
+- **FR-012**: System MUST use modern, visually pleasing UI/UX following constitution guidelines
+- **FR-013**: System MUST use mock data for all features except login initially
 
 ### Key Entities *(include if feature involves data)*
 
-- **User**: Represents authenticated users, with credentials for login.
-- **Resource**: Represents AI resources to be evaluated, with API endpoint, type (prompt/response/image/etc.), title, description, created date, evaluation status (Approved/Rejected), and optional comments.
-- **Chat**: Represents different AI chat instances or types.
-- **Conversation**: Represents individual chat conversations within a chat, with optional titles.
+- **Resource**: Represents AI-generated content (prompts, responses, images) with attributes: title, description, evaluation status, type, API endpoint
+- **Evaluation**: Assessment of a resource with attributes: score, comments, evaluator, timestamp
+- **Chat**: AI conversation container with attributes: name, description, active status
+- **Conversation**: Individual chat session with attributes: title, messages, chat reference, created date
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
-- **SC-001**: Users can complete login in under 30 seconds on standard connections.
-- **SC-002**: 95% of resource registrations are successful without errors.
-- **SC-003**: Users can evaluate and save 10 items in under 5 minutes.
-- **SC-004**: Chat switching updates conversation list within 2 seconds.
-- **SC-005**: Theme changes apply instantly without page reload.
-- **SC-006**: All listings load filtered results in under 3 seconds.
-- **SC-007**: Application maintains responsive layout on devices from 320px to 1920px width.
-- **SC-008**: System maintains acceptable performance with up to 1000 resources per user.
+- **SC-001**: Users can complete login process in under 30 seconds on standard connections
+- **SC-002**: Users can evaluate 10 resources in under 5 minutes with intuitive interface
+- **SC-003**: Chat interface loads conversation lists in under 2 seconds when switching chats
+- **SC-004**: 95% of users rate the UI/UX as modern and visually pleasing in user testing
+- **SC-005**: All listing pages load filtered results in under 3 seconds

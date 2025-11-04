@@ -31,11 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- Code must follow clean code principles (meaningful names, small functions, single responsibility, DRY)
-- Design must employ modern patterns suitable for frontend development
-- Project must remain frontend-only (no backend components)
-- Implementation must be objective and avoid unnecessary complexity
-- UI components must prioritize visual appeal and usability
+- Code must adhere to clean code principles (readable, maintainable, SOLID, DRY)
+- UI/UX must be prioritized and modern in all designs
+- Project must remain frontend-only, using specified technology stack
+- Automated tests are not required; focus on manual validation and clean code
+- Development must be objective and focused, avoiding unnecessary complexity
 
 ## Project Structure
 

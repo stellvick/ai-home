@@ -1,76 +1,100 @@
-# Quickstart: AI Resource Management
+# Quickstart: AI Resource Management and Evaluation
 
-**Date**: 2025-11-04  
-**Feature**: AI Resource Management  
-**Phase**: 1 - Design & Contracts  
+**Date**: 2025-11-04
+**Feature**: AI Resource Management and Evaluation
 
 ## Prerequisites
 
 - Node.js 18+
 - npm or yarn
-- Environment variables configured
+- Git
 
 ## Installation
 
-1. Clone the repository and checkout the feature branch:
-   ```bash
-   git checkout 001-ai-resource-management
-   ```
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd ai-home
+git checkout 001-ai-resource-management
+```
 
 2. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. Configure environment variables:
-   Create `.env.local` with:
-   ```
-   VITE_API_BASE_URL=https://n8n.stellvick.fun/webhook
-   VITE_JWT_SECRET=your_secret_here
-   ```
+3. Install Tailwind CSS PostCSS plugin:
+```bash
+npm install @tailwindcss/postcss
+```
+
+4. Configure environment variables:
+Create `.env` file:
+```
+VITE_JWT_API_URL=https://n8n.stellvick.fun/webhook-test/962701ed-f87d-4ec1-b965-ae74259d0041
+VITE_JWT_SECRET=your-jwt-secret-here
+```
 
 ## Development
 
-Start the development server:
+1. Start development server:
 ```bash
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173`
+2. Open browser to `http://localhost:5173`
 
-## Build for Production
+## Features Overview
+
+### Login
+- Enter username and password
+- JWT obtained from n8n API
+- Redirects to main dashboard on success
+
+### Resources Management
+- View list of AI resources with filters
+- Register new resources (prompts, responses, images)
+- Evaluate resources with scoring and comments
+
+### AI Chat
+- Select from available chats
+- View and manage conversations
+- Add titles to conversations
+- Send messages and receive AI responses
+- Delete conversations
+
+### Configuration
+- Switch between light and dark themes
+- Access settings page
+
+## Mock Data
+
+Initially, the application uses mock data for all features except login. To switch to real APIs, update the service files in `src/services/`.
+
+## Building for Production
 
 ```bash
 npm run build
 ```
 
-## Key Features
-
-1. **Login**: Use your credentials to authenticate via JWT
-2. **Resource Management**: Register AI resources and evaluate items
-3. **AI Chat**: Access multiple chats and manage conversations
-4. **Themes**: Switch between Light and Dark themes
-5. **Configuration**: Access settings page
-
-## API Endpoints
-
-All data is fetched from n8n APIs. Ensure the workflows are active and accessible.
-
-## Troubleshooting
-
-- **Login fails**: Check JWT API availability and credentials
-- **API errors**: Verify n8n webhook URLs and authentication
-- **Build issues**: Ensure all dependencies are installed correctly
-- **Tailwind not working**: Confirm @tailwindcss/postcss is installed and configured
-
 ## Manual Testing Checklist
 
 - [ ] Login with valid credentials
-- [ ] Register a new resource
-- [ ] Fetch and evaluate items
+- [ ] Login with invalid credentials shows error
+- [ ] View resources list with filters
+- [ ] Register new resource
+- [ ] Evaluate a resource
 - [ ] Switch between chats
-- [ ] Add titles to conversations
-- [ ] Delete conversations
-- [ ] Change themes
+- [ ] View conversations in selected chat
+- [ ] Send message in chat
+- [ ] Add title to conversation
+- [ ] Delete conversation
+- [ ] Switch themes
 - [ ] Access configuration page
-- [ ] Verify responsive design on different screen sizes
+- [ ] UI is modern and visually pleasing
+
+## Troubleshooting
+
+- **Tailwind CSS issues**: Ensure @tailwindcss/postcss is installed and PostCSS config is correct
+- **API errors**: Check network tab for failed requests, verify JWT token
+- **Build errors**: Clear node_modules and reinstall dependencies
