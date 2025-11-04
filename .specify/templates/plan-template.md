@@ -31,7 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **Simplicity First**: Proposed solution starts with simplest approach; complexity justified if needed
+- [ ] **Clear Naming**: All planned components have descriptive, meaningful names
+- [ ] **Single Responsibility**: Each planned module/function has clear, single purpose
+- [ ] **DRY Principle**: No obvious code duplication in proposed architecture
+- [ ] **Readability**: Technical approach is clear and understandable to team members
 
 ## Project Structure
 
