@@ -1,12 +1,13 @@
-import React, { Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Navigation } from '@/components/Navigation'
 
 // Lazy load pages
-const Login = React.lazy(() => import('@/pages/Login'))
-const Resources = React.lazy(() => import('@/pages/Resources'))
-const Chat = React.lazy(() => import('@/pages/Chat'))
-const Config = React.lazy(() => import('@/pages/Config'))
-const NotFound = React.lazy(() => import('@/pages/NotFound'))
+const Login = lazy(() => import('@/pages/Login'))
+const Resources = lazy(() => import('@/pages/Resources'))
+const Chat = lazy(() => import('@/pages/Chat'))
+const Config = lazy(() => import('@/pages/Config'))
+const NotFound = lazy(() => import('@/pages/NotFound'))
 
 // Loading fallback
 const LoadingFallback = () => (
@@ -18,6 +19,7 @@ const LoadingFallback = () => (
 export const AppRouter = () => {
   return (
     <BrowserRouter>
+      <Navigation />
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
           <Route path="/login" element={<Login />} />

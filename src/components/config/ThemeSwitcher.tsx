@@ -1,5 +1,5 @@
 import { useThemeStore } from '@/stores/theme'
-import { Button } from '@heroui/react'
+import { Button, Switch, Card, CardBody } from '@heroui/react'
 import { Moon, Sun } from 'lucide-react'
 
 export const ThemeSwitcher = () => {
@@ -7,23 +7,27 @@ export const ThemeSwitcher = () => {
   const toggleTheme = useThemeStore((state) => state.toggleTheme)
 
   return (
-    <div className="flex items-center gap-4 p-4 border rounded-lg bg-white dark:bg-gray-800">
-      <div className="flex items-center gap-2">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-3">
         {theme === 'light' ? (
-          <Sun className="w-5 h-5" />
+          <Sun className="w-5 h-5 text-amber-500" />
         ) : (
-          <Moon className="w-5 h-5" />
+          <Moon className="w-5 h-5 text-indigo-500" />
         )}
-        <span className="capitalize font-medium">{theme} Mode</span>
+        <div>
+          <p className="font-medium capitalize">{theme} Mode</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {theme === 'light' 
+              ? 'Bright and easy on the eyes' 
+              : 'Dark theme for low light environments'}
+          </p>
+        </div>
       </div>
-      <Button
-        isIconOnly
-        onClick={toggleTheme}
-        size="sm"
-        variant="flat"
-      >
-        {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-      </Button>
+      <Switch
+        isSelected={theme === 'dark'}
+        onChange={toggleTheme}
+        size="lg"
+      />
     </div>
   )
 }

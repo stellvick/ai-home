@@ -3,7 +3,6 @@ import { HeroUIProvider } from '@heroui/react'
 import { AppRouter } from '@/lib/router'
 import { queryClient } from '@/lib/react-query'
 import { useThemeStore } from '@/stores/theme'
-import { Navigation } from '@/components/Navigation'
 
 function App() {
   const theme = useThemeStore((state) => state.theme)
@@ -15,7 +14,6 @@ function App() {
           className={`min-h-screen ${theme === 'dark' ? 'dark' : 'light'}`}
           style={{ colorScheme: theme }}
         >
-          <Navigation />
           <AppRouter />
         </div>
       </HeroUIProvider>

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button } from '@heroui/react'
-import { Input } from '@/components/base/Input'
+import { Button, Input, Spacer } from '@heroui/react'
 import { loginSchema, type LoginFormData } from '@/utils/validation'
 import { authService } from '@/services/auth'
 import { useAuthStore } from '@/stores/auth'
+import { AlertCircle } from 'lucide-react'
 
 export const LoginForm = () => {
   const navigate = useNavigate()
@@ -38,32 +38,47 @@ export const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 w-full">
       <Input
+        type="text"
         label="Username"
         placeholder="Enter your username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         isDisabled={isLoading}
         required
+        size="lg"
+        variant="bordered"
+        className="w-full"
       />
       <Input
-        label="Password"
         type="password"
+        label="Password"
         placeholder="Enter your password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         isDisabled={isLoading}
         required
+        size="lg"
+        variant="bordered"
+        className="w-full"
       />
-      {error && <div className="text-red-500 text-sm">{error}</div>}
+      {error && (
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3 flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+          <p className="text-red-700 dark:text-red-300 text-sm">{error}</p>
+        </div>
+      )}
+      <Spacer y={2} />
       <Button
         type="submit"
-        className="w-full"
+        color="primary"
+        size="lg"
+        fullWidth
         isLoading={isLoading}
-        isDisabled={isLoading}
+        isDisabled={isLoading || !username || !password}
       >
-        {isLoading ? 'Logging in...' : 'Login'}
+        {isLoading ? 'Signing in...' : 'Sign In'}
       </Button>
     </form>
   )
