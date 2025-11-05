@@ -16,7 +16,13 @@ Sync Impact Report:
 Code must adhere to clean code principles: readable, maintainable, following SOLID, DRY, and other best practices. Automated tests are not required.
 
 ### Documentation
-If a package documentation link is presented it needs to be used.
+If a package documentation link is presented it needs to be used. 
+Rule can be ignored if package is not being used.
+If you can access the internet is mandatory to access the link and search for components/info/parameters.
+Link HeroUI: https://www.heroui.com/docs/guide/introduction
+
+### Images
+Images to be used in the website are in the /assets folder. It is mandatory to use favicon size 32x32 and logo size 300x100.
 
 ### Modern Frontend
 Utilize modern frontend technologies and frameworks. The project is frontend-only, focusing on contemporary web development practices.
