@@ -22,7 +22,7 @@ If you can access the internet is mandatory to access the link and search for co
 Link HeroUI: https://www.heroui.com/docs/guide/introduction
 
 ### Images
-Images to be used in the website are in the /assets folder. It is mandatory to use favicon size 32x32 and logo size 300x100.
+Images to be used in the website are in the /assets folder. It is mandatory to use favicon and logo.
 
 ### Modern Frontend
 Utilize modern frontend technologies and frameworks. The project is frontend-only, focusing on contemporary web development practices.

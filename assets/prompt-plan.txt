@@ -1,5 +1,20 @@
-- A aplicação deve usar typescript, react 19 ultima versão, vite, tailwind 4 e heroui. Os dados serão obtidos atravez de uma api ja pronta mas mock deve ser usado inicialmente. A função deve estar pronta para ser implementada. Não são necessarios testes automatizados.
-- Usar componentes do HeroUI: https://www.heroui.com/docs/guide/introduction antes de fazer qualquer componente. Alem de usar os componentes the componente appearance should be modern and visually pleasing.
+- A aplicação deve usar typescript, react 19 ultima versão, vite, tailwind 4 e heroui. 
+Os dados serão obtidos atravez de uma api ja pronta mas mock deve ser usado inicialmente. Backend não e necessario somente front web.
+- A aplicação deve ser responsiva e funcionar bem em dispositivos moveis e desktop.
+- Criar uma tela de login com validação de formulario usando yup.
+- Criar uma dashboard que exiba uma lista de itens obtidos da api mock.
+- Implementar paginação na lista de itens.
+- Adicionar funcionalidade de busca para filtrar os itens na lista.
+- Implementar um sistema de estado global usando zustand para gerenciar o estado da aplicação.
+- Adicionar funcionalidade de detalhes: ao clicar em um item da lista, deve abrir uma modal exibindo mais informações sobre o item.
+- Implementar autenticação simples: após o login, o token deve ser armazenado usando encrypt-storage e usado para proteger as rotas da dashboard.
+- Usar react query para o gerenciamento de dados assíncronos e cache.
+- A aplicação deve ter uma navegação clara e intuitiva entre as telas.
+- Usar hooks personalizados onde for apropriado para melhorar a reutilização de código.
+- Imagens estão na pasta /assets
+A função deve estar pronta para ser implementada. Não são necessarios testes automatizados.
+- Usar componentes do HeroUI: https://www.heroui.com/docs/guide/introduction antes de fazer qualquer componente. 
+Alem de usar os componentes the componente appearance should be modern and visually pleasing.
 
 Atenção ao instalar o tailwind: [plugin:vite:css] [postcss] It looks like you're trying to use `tailwindcss` directly as a PostCSS plugin. The PostCSS plugin has moved to a separate package, so to continue using Tailwind CSS with PostCSS you'll need to install `@tailwindcss/postcss` and update your PostCSS configuration.
 
