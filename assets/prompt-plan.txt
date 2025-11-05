@@ -11,12 +11,23 @@ Os dados serão obtidos atravez de uma api ja pronta mas mock deve ser usado ini
 - Usar react query para o gerenciamento de dados assíncronos e cache.
 - A aplicação deve ter uma navegação clara e intuitiva entre as telas.
 - Usar hooks personalizados onde for apropriado para melhorar a reutilização de código.
-- Imagens estão na pasta /assets
+- Imagens estão na pasta /assets elas tem que ser usadas na aplicação.
 A função deve estar pronta para ser implementada. Não são necessarios testes automatizados.
-- Usar componentes do HeroUI: https://www.heroui.com/docs/guide/introduction antes de fazer qualquer componente. 
+- Usar componentes do HeroUI: https://www.heroui.com/docs/guide/introduction antes de fazer qualquer componente.
+Atenção ao uso do HeroUI para o layout segue site com documentação:
+GIT Components - https://github.com/heroui-inc/heroui/tree/main/packages/core/theme/src/components
+Doc - https://www.heroui.com/docs/components/accordion
+installation refference - https://www.heroui.com/docs/guide/installation
+theme - https://www.heroui.com/docs/customization/theme and https://www.heroui.com/docs/customization/customize-theme and https://www.heroui.com/docs/customization/create-theme
 Alem de usar os componentes the componente appearance should be modern and visually pleasing.
 
 Atenção ao instalar o tailwind: [plugin:vite:css] [postcss] It looks like you're trying to use `tailwindcss` directly as a PostCSS plugin. The PostCSS plugin has moved to a separate package, so to continue using Tailwind CSS with PostCSS you'll need to install `@tailwindcss/postcss` and update your PostCSS configuration.
 
+- Cadastro de recursos cada um com sua API especifica por exemplo: Buscar todas respostas de um chat e avaliar elas uma por uma após avaliar devera ser enviado para o banco. Para o objeto a ser avaliado preciso de titulo, descrição e se foi avaliado ou não.
+- A pagina que contem o chat de IA que podera acessar varios chats diferentes o chat devera listar qual chat sera usado listar conversas e permitir adicionar um titulo nas conversas, deletar as conversas. Ao trocar o chat a lista de conversas tambem deve mudar.
+- Me de dois temas e uma pagina de configuração.
+- para todas listagens incluir filtros.
+- Backend não é necessário todas APIs serão criados no n8n um mock deve ser criado e usado inicialmente. Crie uma variavel de ambiente para alternar entre mock e real. A implementacao sera feita manualmente depois.
+- Criar um layout moderno UI/UX tem que ser feito e seguir a constituição moderno e visualmente agradável. Sempre componentes de pacotes fornecidos primeiro.- Inicialmente um mock pode ser usado para tudo menos a pagina de login.
 
 Usar react query, yup, zustand, encrypt-storage, react use, lucide react.

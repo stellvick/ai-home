@@ -1,0 +1,275 @@
+openapi: 3.1.0
+info:
+  title: Oráculo IA Frontend Contracts (n8n-backed)
+  version: 0.1.0
+servers:
+  - url: ${VITE_API_BASE_URL}
+    description: Resolved at runtime by environment
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Paginated:
+      type: object
+      properties:
+        page:
+          type: integer
+          minimum: 1
+        pageSize:
+          type: integer
+        total:
+          type: integer
+        items:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/Recurso'
+              - $ref: '#/components/schemas/Conversa'
+              - $ref: '#/components/schemas/Chat'
+    Recurso:
+      type: object
+      required: [id, titulo, descricao, avaliado]
+      properties:
+        id: { type: string }
+        titulo: { type: string }
+        descricao: { type: string }
+        avaliado: { type: boolean }
+    AvaliacaoInput:
+      type: object
+      required: [nota]
+      properties:
+        nota: { type: number, minimum: 0 }
+        comentario: { type: string }
+    Chat:
+      type: object
+      required: [id, nome]
+      properties:
+        id: { type: string }
+        nome: { type: string }
+    Conversa:
+      type: object
+      required: [id, chatId, titulo]
+      properties:
+        id: { type: string }
+        chatId: { type: string }
+        titulo: { type: string }
+    LoginInput:
+      type: object
+      required: [email, senha]
+      properties:
+        email: { type: string, format: email }
+        senha: { type: string, minLength: 6 }
+    LoginResponse:
+      type: object
+      required: [token]
+      properties:
+        token: { type: string }
+security:
+  - bearerAuth: []
+paths:
+  /auth/login:
+    post:
+      summary: Login (real backend)
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Unauthorized
+  /items:
+    get:
+      summary: List items (dashboard)
+      parameters:
+        - in: query
+          name: page
+          schema: { type: integer, minimum: 1, default: 1 }
+        - in: query
+          name: pageSize
+          schema: { type: integer, minimum: 1, maximum: 100, default: 20 }
+        - in: query
+          name: search
+          schema: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Paginated'
+                  - type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Recurso'
+  /items/{id}:
+    get:
+      summary: Get item details
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recurso'
+  /resources:
+    get:
+      summary: List resources (avaliáveis)
+      parameters:
+        - in: query
+          name: page
+          schema: { type: integer, minimum: 1, default: 1 }
+        - in: query
+          name: pageSize
+          schema: { type: integer, minimum: 1, maximum: 100, default: 20 }
+        - in: query
+          name: search
+          schema: { type: string }
+        - in: query
+          name: avaliado
+          schema: { type: boolean }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Paginated'
+                  - type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Recurso'
+  /resources/{id}/evaluate:
+    post:
+      summary: Avaliar recurso
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AvaliacaoInput' }
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /chats:
+    get:
+      summary: Listar chats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Chat' }
+    post:
+      summary: Criar chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [nome]
+              properties:
+                nome: { type: string }
+      responses:
+        '201': { description: Created }
+  /chats/{chatId}:
+    delete:
+      summary: Deletar chat
+      parameters:
+        - name: chatId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '204': { description: No Content }
+  /chats/{chatId}/conversations:
+    get:
+      summary: Listar conversas do chat
+      parameters:
+        - name: chatId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Paginated'
+                  - type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Conversa'
+    post:
+      summary: Criar conversa
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [titulo]
+              properties:
+                titulo: { type: string }
+      responses:
+        '201': { description: Created }
+  /conversations/{id}:
+    patch:
+      summary: Renomear conversa
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [titulo]
+              properties:
+                titulo: { type: string }
+      responses:
+        '200': { description: OK }
+    delete:
+      summary: Deletar conversa
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '204': { description: No Content }
