@@ -32,7 +32,7 @@ export const registrationSchema = yup.object().shape({
     .matches(/[A-Z]/, 'Password must contain uppercase letter')
     .matches(/[0-9]/, 'Password must contain number')
     .required('Password is required'),
-  passwordConfirm: yup
+  confirmPassword: yup
     .string()
     .oneOf([yup.ref('password')], 'Passwords must match')
     .required('Please confirm password'),
