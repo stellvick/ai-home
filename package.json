@@ -1,0 +1,50 @@
+{
+  "name": "ai-oracle-platform",
+  "version": "1.0.0",
+  "description": "Mystical AI evaluation platform with secure authentication and interactive chat interface",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch"
+  },
+  "dependencies": {
+    "@heroui/react": "^2.4.8",
+    "@heroui/system": "^2.4.8",
+    "@heroui/theme": "^2.4.8",
+    "@tanstack/react-query": "^5.51.0",
+    "encrypt-storage": "^2.14.0",
+    "framer-motion": "^11.3.0",
+    "lucide-react": "^0.406.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.28.0",
+    "react-use": "^17.5.1",
+    "yup": "^1.4.0",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.1",
+    "@types/node": "^20.14.9",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.10.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "postcss": "^8.4.40",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^4.0.1",
+    "terser": "^5.44.1",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0"
+  }
+}
