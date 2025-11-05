@@ -13,9 +13,9 @@
 
 ## User Scenarios & Testing
 
-### User Story 1 - Compreender a proposta na página de Login (Priority: P1)
+### User Story 1 - Acessar a página de Login e entender a proposta (Priority: P1)
 
-Como visitante, quero acessar a página de Login e entender de forma sucinta a proposta de valor do Oráculo IA, com visual místico e CTA claro para criar conta ou entrar, para decidir avançar.
+Como visitante, quero acessar a página de Login e entender claramente a proposta de valor do Oráculo IA, com interface profissional e call-to-action destacado para criar conta ou entrar, para decidir avançar.
 
 **Why this priority**: A primeira impressão define confiança e continuidade de navegação.
 
@@ -32,7 +32,7 @@ Como visitante, quero acessar a página de Login e entender de forma sucinta a p
 
 Como usuário, quero alternar entre dois temas visuais oficiais e pré-visualizar instantaneamente, para personalizar minha experiência.
 
-**Why this priority**: O tema é parte central da identidade e da imersão proposta.
+**Why this priority**: O tema é parte central da identidade visual e experiência do usuário.
 
 **Independent Test**: Acessar Configurações > Tema; alternar entre os dois temas; confirmar que a aplicação atualiza visualmente sem recarregar página e preferência persiste.
 
@@ -88,15 +88,15 @@ Como usuário, quero editar perfil, notificações, segurança e preferências d
 - FR-003: A navegação deve ser intuitiva com menu fixo, breadcrumbs em páginas internas e estados de foco/hover visíveis.
 - FR-004: O fluxo de cadastro/entrada deve ser simples, com mensagens de erro claras e feedback de progresso; após sucesso, direcionar ao Dashboard.
 - FR-005: Após autenticação, o usuário deve ver um Dashboard com visão geral e atalhos para áreas-chave.
-- FR-006: A listagem de recursos deve oferecer filtros básicos e uma forma temática de avaliação (ícones/símbolos) sem ambiguidade.
-- FR-007: Deve haver uma página de chat com IA que permita múltiplas conversas, histórico opcional e avatar temático.
+- FR-006: A listagem de recursos deve oferecer filtros básicos e sistema de avaliação visual (ícones/símbolos) sem ambiguidade.
+- FR-007: Deve haver uma página de chat com IA que permita múltiplas conversas e histórico opcional.
 - FR-008: A página de Configurações deve conter abas: Perfil (nome, avatar, biografia), Tema Visual (alternância entre dois temas oficiais com preview), Notificações (tipos e canais), Segurança (listar/encerrar sessões, renovar acesso), Chat IA (tom, modelo/nome e histórico on/off).
 - FR-009: Preferências de Tema e Configurações devem persistir entre sessões do usuário.
 - FR-010: A identidade visual deve seguir paleta de cores e diretrizes tipográficas coerentes com a marca.
 - FR-011: Animações devem ser suaves, discretas e com modo reduzido, respeitando preferências de acessibilidade do sistema.
 - FR-012: A interface deve ser responsiva, adaptando layout e navegação a tamanhos de tela móveis e desktop.
 - FR-013: Conteúdos e controles devem atingir contrastes mínimos conforme diretrizes de acessibilidade.
-- FR-014: Ícones e símbolos temáticos devem apoiar compreensão, não substituir texto essencial.
+- FR-014: Ícones e símbolos devem apoiar compreensão, não substituir texto essencial.
 - FR-015: Sessões do usuário devem ser seguras e permitir encerramento manual de dispositivos/sessões listadas.
 - FR-016: Integrações de dados (cadastro/listagem/avaliação) devem operar por meio de um serviço externo definido, com mensagens de erro amigáveis em caso de indisponibilidade.
  - FR-017: MVP inclui as páginas: Home (autenticada), Login/Cadastro (pública), Dashboard, Configurações e Chat IA. Somente Login/Cadastro é público; demais páginas requerem autenticação.
@@ -110,8 +110,8 @@ Como usuário, quero editar perfil, notificações, segurança e preferências d
 - AC-003 (FR-003): Menu fixo visível em telas desktop e acessível em mobile; breadcrumbs presentes em páginas internas; foco visível e ordem lógica por tab.
 - AC-004 (FR-004): Formulários de login/cadastro validam campos obrigatórios com mensagens claras; em submissão válida, usuário é direcionado ao Dashboard; em erro, feedback não técnico orienta correção.
 - AC-005 (FR-005): Após autenticação, Dashboard exibe pelo menos: saudação, atalhos para páginas principais e indicadores resumidos.
-- AC-006 (FR-006): Listagem de recursos permite filtrar por ao menos um critério; avaliação é registrada com representação temática inequívoca; estado vazio oferece instrução clara.
-- AC-007 (FR-007): Página de chat permite criar múltiplas conversas; usuário visualiza histórico (quando habilitado) e avatar temático; envio e exibição têm feedback de estado.
+- AC-006 (FR-006): Listagem de recursos permite filtrar por ao menos um critério; avaliação é registrada com representação visual clara; estado vazio oferece instrução clara.
+- AC-007 (FR-007): Página de chat permite criar múltiplas conversas; usuário visualiza histórico (quando habilitado); envio e exibição têm feedback de estado.
 - AC-008 (FR-008): Configurações possuem abas Perfil, Tema Visual, Notificações, Segurança e Chat IA; cada aba salva preferências com confirmação visual.
 - AC-009 (FR-009): Preferências persistem após fechar e reabrir a aplicação; teste de reabertura confirma valores mantidos.
 - AC-010 (FR-010): Paleta e tipografia aplicadas conforme diretrizes; contrastes respeitam padrões definidos; variações de peso/tamanho mantêm legibilidade.
@@ -132,7 +132,7 @@ Como usuário, quero editar perfil, notificações, segurança e preferências d
 - PreferenciaNotificacao: tipos (sistema/produto), canais (email/SMS/push), status por tipo.
 - ConfigChatIA: tom, identificação do modelo (rótulo), histórico habilitado/limpar.
 - Sessao: lista de sessões ativas, criação, expiração, encerramento manual.
-- Recurso e Avaliacao: item cadastrável/avaliável e suas avaliações temáticas (alto nível; sem detalhes técnicos).
+- Recurso e Avaliacao: item cadastrável/avaliável e suas avaliações (alto nível; sem detalhes técnicos).
 
 ## Success Criteria (mandatory)
 

@@ -6,35 +6,35 @@ Plan: specs/001-oracle-branding-ux/plan.md
 
 ## Phase 1 — Setup (project initialization)
 
-- [ ] T001 Initialize Vite + React 19 + TS project structure in repo root
-- [ ] T002 Add Tailwind 4 PostCSS plugin in postcss.config.(js|mjs) with @tailwindcss/postcss
-- [ ] T003 Create tailwind.config.ts with project paths and theme tokens
-- [ ] T004 Create src/index.css with Tailwind base/components/utilities imports
-- [ ] T005 [P] Configure HeroUI per docs in src/theme/hero-ui.ts and wrap app provider
-- [ ] T006 Install and wire react-router with src/routes/router.tsx and RouterProvider in src/main.tsx
-- [ ] T007 Create .env.example with VITE_USE_MOCK and VITE_API_BASE_URL
-- [ ] T008 [P] Add lucide-react icon setup in src/components/icons/Icon.tsx
-- [ ] T009 [P] Add react-use and basic utilities in src/hooks/useIsReducedMotion.ts
+- [X] T001 Initialize Vite + React 19 + TS project structure in repo root
+- [X] T002 Add Tailwind 4 PostCSS plugin in postcss.config.(js|mjs) with @tailwindcss/postcss
+- [X] T003 Create tailwind.config.ts with project paths and theme tokens
+- [X] T004 Create src/index.css with Tailwind base/components/utilities imports
+- [X] T005 [P] Configure HeroUI per docs in src/theme/hero-ui.ts and wrap app provider
+- [X] T006 Install and wire react-router with src/routes/router.tsx and RouterProvider in src/main.tsx
+- [X] T007 Create .env.example with VITE_USE_MOCK and VITE_API_BASE_URL
+- [X] T008 [P] Add lucide-react icon setup in src/components/icons/Icon.tsx
+- [X] T009 [P] Add react-use and basic utilities in src/hooks/useIsReducedMotion.ts
 
 ## Phase 2 — Foundational (shared prerequisites)
 
-- [ ] T010 Create src/services/http.ts (fetch wrapper) reading VITE_API_BASE_URL and Authorization header
-- [ ] T011 Implement mock/real switch in src/services/api/index.ts using VITE_USE_MOCK
-- [ ] T012 [P] Create real API clients in src/services/api/real/{auth.ts,items.ts,resources.ts,chats.ts,conversations.ts}
-- [ ] T013 [P] Create mock API clients in src/services/api/mock/{items.ts,resources.ts,chats.ts,conversations.ts}
-- [ ] T014 Define types from OpenAPI in src/types/contracts.ts (derive interfaces for Item, Recurso, Chat, Conversa)
-- [ ] T015 Setup encrypt-storage in src/services/auth/storage.ts (key: auth_token)
-- [ ] T016 Create Zustand stores: src/store/{auth.ts,ui.ts,settings.ts}
-- [ ] T017 [P] Theme provider and tokens in src/theme/{index.tsx,themes.ts} with ids oraculo-lunar/oraculo-sombras
-- [ ] T018 [P] App shell layout using HeroUI in src/components/layout/AppShell.tsx (header/sidebar, slots)
-- [ ] T019 Route guards in src/routes/guards/RequireAuth.tsx (redirect to /login when no token)
-- [ ] T020 Public/private routes in src/routes/paths.ts and wiring in src/routes/router.tsx
-- [ ] T021 Global toasts/snackbars and error boundary in src/components/feedback/{Toaster.tsx,ErrorBoundary.tsx}
-- [ ] T022 Accessibility baseline (focus ring, skip links) in src/components/a11y/{SkipToContent.tsx}
+- [X] T010 Create src/services/http.ts (fetch wrapper) reading VITE_API_BASE_URL and Authorization header
+- [X] T011 Implement mock/real switch in src/services/api/index.ts using VITE_USE_MOCK
+- [X] T012 [P] Create real API clients in src/services/api/real/{auth.ts,items.ts,resources.ts,chats.ts,conversations.ts}
+- [X] T013 [P] Create mock API clients in src/services/api/mock/{items.ts,resources.ts,chats.ts,conversations.ts}
+- [X] T014 Define types from OpenAPI in src/types/contracts.ts (derive interfaces for Item, Recurso, Chat, Conversa)
+- [X] T015 Setup encrypt-storage in src/services/auth/storage.ts (key: auth_token)
+- [X] T016 Create Zustand stores: src/store/{auth.ts,ui.ts,settings.ts}
+- [X] T017 [P] Theme provider and tokens in src/theme/{index.tsx,themes.ts} with ids oraculo-lunar/oraculo-sombras
+- [X] T018 [P] App shell layout using HeroUI in src/components/layout/AppShell.tsx (header/sidebar, slots)
+- [X] T019 Route guards in src/routes/guards/RequireAuth.tsx (redirect to /login when no token)
+- [X] T020 Public/private routes in src/routes/paths.ts and wiring in src/routes/router.tsx
+- [X] T021 Global toasts/snackbars and error boundary in src/components/feedback/{Toaster.tsx,ErrorBoundary.tsx}
+- [X] T022 Accessibility baseline (focus ring, skip links) in src/components/a11y/{SkipToContent.tsx}
 
 ## Phase 3 — [US1] Página de Login comunica proposta (P1)
 
-Goal: Página pública /login com mensagem de valor clara, visual místico e CTA; validação com Yup; login real; redirect pós-login.
+Goal: Página pública /login com mensagem de valor clara, interface profissional e CTA; validação com Yup; login real; redirect pós-login.
 Independent test: Usuários entendem a proposta em 10s; submissão válida leva ao Dashboard; inválida mostra erros claros.
 
 - [ ] T023 [US1] Create src/features/auth/pages/LoginPage.tsx (HeroUI form, brand copy, CTA)
@@ -86,7 +86,7 @@ Independent test: Trocar chat muda conversas; criar/renomear/deletar reflete ime
 
 ## Phase 8 — [US6] Recursos & Avaliação (P2)
 
-Goal: Listar recursos com filtros (avaliado/search) e avaliar item (POST /resources/{id}/evaluate); representação temática.
+Goal: Listar recursos com filtros (avaliado/search) e avaliar item (POST /resources/{id}/evaluate); sistema de avaliação visual.
 Independent test: Filtro por status e busca; registrar avaliação; feedback claro em sucesso/erro.
 
 - [ ] T045 [US6] Resources service in src/services/api/{real,mock}/resources.ts

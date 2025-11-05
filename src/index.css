@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* Custom styles for mystical theme */
+.theme-oraculo-lunar {
+  --tw-ring-color: rgb(75 0 130 / var(--tw-ring-opacity)); /* Roxo profundo */
+}
+
+.theme-oraculo-sombras {
+  --tw-ring-color: rgb(46 46 46 / var(--tw-ring-opacity)); /* Cinza escuro */
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Enhanced scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Focus styles for accessibility */
+.focus-ring:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+/* Mystical glow effects */
+.glow-primary {
+  box-shadow: 0 0 20px var(--color-primary);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 20px var(--color-secondary);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px var(--color-accent);
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-custom {
+    backdrop-filter: blur(10px);
+  }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .backdrop-blur-custom {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Enhanced professional styling */
+.pro-card {
+  background: linear-gradient(135deg, var(--color-card) 0%, var(--color-surface) 100%);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.pro-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-primary);
+}
+
+.pro-input {
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
+  color: var(--color-foreground);
+  transition: all 0.2s ease;
+}
+
+.pro-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1);
+}
+
+.pro-button {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border: none;
+  color: var(--color-foreground);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.25);
+}
+
+.pro-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Modern glassmorphism card design */
+.modern-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4B0082, #D4AF37, #4B0082);
+  border-radius: 24px 24px 0 0;
+}
+
+/* Mystical background gradients */
+.mystical-bg {
+  background: linear-gradient(135deg, #0A0A0A, #1A1A1A, #0B2545);
+  position: relative;
+  overflow: hidden;
+}
+
+.mystical-bg::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 320px;
+  height: 320px;
+  background: rgba(75, 0, 130, 0.3);
+  border-radius: 50%;
+  filter: blur(64px);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.mystical-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 320px;
+  height: 320px;
+  background: rgba(212, 175, 55, 0.2);
+  border-radius: 50%;
+  filter: blur(64px);
+  animation: pulse 4s ease-in-out infinite reverse;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* Enhanced button with better visibility */
+.modern-button {
+  background: #4B0082;
+  color: white !important;
+  border: none;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.025em;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-button:hover {
+  background: #6B0A9A;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 30px rgba(75, 0, 130, 0.5);
+}
+
+.modern-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.7s ease;
+}
+
+.modern-button:hover::before {
+  transform: translateX(100%);
+}
+
+/* Dark theme input styles */
+.dark-input {
+  background: #374151 !important;
+  border: 1px solid #4B5563 !important;
+  color: #F5F5F5 !important;
+}
+
+.dark-input::placeholder {
+  color: #9CA3AF !important;
+}
+
+.dark-input:focus {
+  border-color: #4B0082 !important;
+  box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1) !important;
+}

@@ -43,7 +43,7 @@
 ### Avaliacao
 - id (string)
 - recursoId (string)
-- nota (number) # representação temática pode mapear para símbolos na UI
+- nota (number) # representação visual pode mapear para símbolos na UI
 - comentario (string, optional)
 - criadoEm (datetime)
 
