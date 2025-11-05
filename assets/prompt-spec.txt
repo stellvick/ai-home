@@ -1,0 +1,80 @@
+1. Estratégia da Marca (Brand Strategist)
+Nome sugerido: Oráculo IA
+Posicionamento: Guardião oculto da qualidade em IA, combina misticismo, expertise e tecnologia avançada para avaliar prompts, respostas, imagens e arquivos.
+Proposta de valor: Avaliação precisa, segura via JWT, integração simplificada por APIs, experiência imersiva com UI/UX místico.
+Valores: Confiança, inovação, mistério, sabedoria e segurança.
+Diferenciais: Diferenciação pelo tema místico, segurança rigorosa, avaliação multimodal, design sofisticado e expertise técnica.
+2. Voz da Marca (Creative Copywriter)
+Voz: Mentor enigmático e sábio, com linguagem poética, profunda e confiável, acessível para todos públicos.
+Tom: Enigmático, inspirador, claro, sereno e respeitoso.
+Mensagens-Chave:
+“Revele os segredos ocultos do amanhã com Oráculo IA.”
+“Decifre o enigma dos dados e transforme escolhas em previsões certeiras.”
+“A sabedoria do oráculo, a precisão da IA.”
+Tags:
+“Oráculo IA: Revelando o invisível, decifrando o futuro.”
+“Misticismo e ciência, unidas para sua inteligência.”
+Estratégia de Conteúdo: Conteúdos temáticos sobre sabedoria do oráculo, desvendando enigmas da IA, visões futuras, gamificação e narrativa esotérica.
+3. Identidade Visual (Graphic Designer)
+Paleta de cores:
+Roxo profundo (#4B0082)
+Azul noite (#0B2545)
+Dourado metálico (#D4AF37)
+Cinza escuro (#2E2E2E)
+Branco off-white (#F5F5F5)
+Tipografia:
+Principal: Cinzel Decorative (serifada, mística)
+Secundária: Montserrat ou Lato (sans serif, moderna)
+Estilo Visual: Sombrio, etéreo, elegante, com texturas suaves, brilhos dourados metálicos, ícones e símbolos místicos (mandalas, olhos, constelações).
+Princípios: Contraste forte, equilíbrio geométrico, simplicidade sofisticada e consistência dos elementos.
+4. Estrutura e Layout do Website (Web Designer)
+Layout dark mode: Fundo azul escuro/roxo, detalhes dourados, tipografia serifada para títulos e sans serif para textos.
+Páginas principais:
+Home: Introdução enigmática e visual animado (bola de cristal virtual)
+Login/Cadastro: Formulários simples, animações místicas para processar login com JWT
+Dashboard: Visão geral recursos, estatísticas místicas
+Cadastro de recursos: Formularios integrados com API
+Listagem e avaliação de recursos: Com filtros, notas em runas
+Chat IA: Muitos chats, interface em estilo pergaminho, avatar oráculo
+Configurações: Gestão de perfil, temas, notificações, segurança, chat IA
+Navegação: Menu fixo, responsivo, breadcrumbs, animações suaves, ícones temáticos
+Tecnologias sugeridas: React/Vue, TailwindCSS, SPA, autenticação JWT, WebSocket para chats.
+5. UX e UI (UI/UX Designer)
+Navegação intuitiva: Menus claros, organização hierárquica em camadas (Grimório Digital), suporte a dispositivos e teclados.
+Interatividade: Animações suaves e orgânicas (brilhos, pulsos), gamificação leve para engajamento.
+Acessibilidade: Contraste adequado, suporte a leitores de tela, áreas de toque amplas.
+Feedback claro: Mensagens visuais temáticas para ações, estados de botões animados.
+Responsividade: Layout fluido, prioridade em conteúdo, menus adaptáveis em mobile (drawer/hamburger).
+UI Visual: Combinação entre tipografia serifada elegante e sans-serif moderna, ícones com símbolos arcanos, fundos texturizados sutis.
+6. Diretrizes de Motion Graphics (Motion Graphics Designer)
+Princípios: Movimentos suaves, ritmo meditativo, delicadeza, hierarquia visual dinâmica, looping harmônico.
+Tipos de animações:
+Entrada e transição com fade-in e efeitos esfumaçados.
+Partículas flutuantes e linhas de energia no background.
+Microinterações (hover com brilho, pulsos, partículas ao clicar).
+Mascote oráculo animado discretamente.
+Função: Criar imersão, reforçar misticismo e magia da IA, guiar atenção sem atrapalhar usabilidade.
+Performance: Animações leves (CSS, SVG), lazy loading, modo reduzido para acessibilidade.
+7. Temas Visuais para a Plataforma (Creative Copywriter + Web Designer)
+Tema 1: Oráculo Lunar – Místico e Etéreo
+Fundo azul profundo, gradientes do azul marinho ao preto azulado.
+Destaques em prata, lilás suave, branco perolado, com brilhos sutis.
+Elementos gráficos delicados: luas, estrelas, constelações com linhas finas.
+Atmosfera calma, serena, contemplativa, que inspira conexão cósmica e espiritualidade leve.
+Animações leves e fluídas.
+Tema 2: Oráculo das Sombras – Obscuro e Fantástico
+Fundo preto absoluto e cinzas escuros com textura de pedra/pergaminho.
+Destaques em vermelho carmesim, dourado envelhecido e âmbar profundo.
+Ilustrações detalhadas de criaturas fantásticas (dragões, corujas) estilo gravura antiga.
+Símbolos arcanos complexos, bordas barrocas/góticas, sombras intensas.
+Atmosfera intensa, imersiva e dramática, remete a um santuário de magia proibida.
+8. Página de Configurações (Web Designer)
+Layout responsivo com sidebar no desktop e menu dropdown em mobile.
+Abas para: Perfil, Tema Visual, Notificações, Segurança, Chat IA.
+Tema visual: Preview e toggle para os dois temas (Crepúsculo Arcano / Nevoeiro Sombrio).
+Perfil: Nome, foto/avatar místico, biografia curta.
+Notificações: Escolha por tipo e canal (email, SMS, push).
+Segurança: Listagem de sessões ativas, encerramento, renovação token JWT.
+Chat IA: Configuração de tom da IA, modelo, histórico habilitado/limpar.
+Estilo visual com fontes serifadas leves, fundo escuro com gradientes e efeitos de névoa, ícones arcanos.
+Exemplo de implementação React + TailwindCSS disponível para referência e prototipagem.
