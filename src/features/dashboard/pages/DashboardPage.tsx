@@ -11,10 +11,10 @@ export function DashboardPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-heading text-white mb-4 tracking-heading drop-shadow-lg">
-            Oráculo IA Dashboard
+            IA Oracle Dashboard
           </h1>
           <p className="text-white/80 text-lg">
-            Gerencie seus recursos de IA no reino das estrelas
+            Gerencie seus recursos de IA de forma eficiente
           </p>
           <Button
             color="primary"
@@ -51,7 +51,7 @@ export function DashboardPage() {
                   Seus Recursos
                 </h2>
                 <p className="text-white/70">
-                  Explore e gerencie seus artefatos místicos de IA
+                  Explore e gerencie seus recursos de IA
                 </p>
               </div>
             </MysticalCard>

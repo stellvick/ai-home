@@ -14,7 +14,7 @@ export const ResourcesPage: React.FC = () => {
                   Recursos IA
                 </h1>
                 <p className="text-white/70">
-                  Explore artefatos místicos e avalie seu conhecimento ancestral
+                  Explore recursos de IA e avalie seu potencial
                 </p>
               </div>
             </MysticalCard>

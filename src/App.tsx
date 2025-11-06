@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      <h1>Oráculo IA</h1>
+      <h1>IA Oracle</h1>
       <p>Initializing project...</p>
     </div>
   )

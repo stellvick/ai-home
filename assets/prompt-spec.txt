@@ -1,20 +1,20 @@
 1. Estratégia da Marca (Brand Strategist)
-Nome sugerido: Oráculo IA
+Nome sugerido: IA Oracle
 Posicionamento: Guardião oculto da qualidade em IA, combina misticismo, expertise e tecnologia avançada para avaliar prompts, respostas, imagens e arquivos.
-Proposta de valor: Avaliação precisa, segura via JWT, integração simplificada por APIs, experiência imersiva com UI/UX místico.
-Valores: Confiança, inovação, mistério, sabedoria e segurança.
-Diferenciais: Diferenciação pelo tema místico, segurança rigorosa, avaliação multimodal, design sofisticado e expertise técnica.
+Proposta de valor: Avaliação precisa, segura via JWT, integração simplificada por APIs, experiência imersiva com UI/UX profissional.
+Valores: Confiança, inovação, expertise e segurança.
+Diferenciais: Segurança rigorosa, avaliação multimodal, design sofisticado e expertise técnica.
 2. Voz da Marca (Creative Copywriter)
-Voz: Mentor enigmático e sábio, com linguagem poética, profunda e confiável, acessível para todos públicos.
-Tom: Enigmático, inspirador, claro, sereno e respeitoso.
+Voz: Mentor experiente e confiável, com linguagem clara, profunda e acessível para todos públicos.
+Tom: Inspirador, claro, sereno e respeitoso.
 Mensagens-Chave:
-“Revele os segredos ocultos do amanhã com Oráculo IA.”
-“Decifre o enigma dos dados e transforme escolhas em previsões certeiras.”
-“A sabedoria do oráculo, a precisão da IA.”
+"Potencialize seus recursos de IA com IA Oracle."
+"Otimize decisões com avaliações precisas de IA."
+"A expertise da IA, a precisão dos dados."
 Tags:
-“Oráculo IA: Revelando o invisível, decifrando o futuro.”
-“Misticismo e ciência, unidas para sua inteligência.”
-Estratégia de Conteúdo: Conteúdos temáticos sobre sabedoria do oráculo, desvendando enigmas da IA, visões futuras, gamificação e narrativa esotérica.
+"IA Oracle: Maximizando o potencial da IA."
+"Inovação e precisão para sua inteligência artificial."
+Estratégia de Conteúdo: Conteúdos sobre otimização de IA, melhores práticas, inovações tecnológicas, e insights para tomada de decisão.
 3. Identidade Visual (Graphic Designer)
 Paleta de cores:
 Roxo profundo (#4B0082)

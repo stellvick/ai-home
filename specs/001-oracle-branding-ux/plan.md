@@ -1,4 +1,4 @@
-# Implementation Plan: Oráculo IA — Branding, UI e Temas
+# Implementation Plan: IA Oracle — Branding, UI e Temas
 
 **Branch**: `001-oracle-branding-ux` | **Date**: 2025-11-05 | **Spec**: specs/001-oracle-branding-ux/spec.md
 **Input**: Feature specification from `/specs/001-oracle-branding-ux/spec.md`

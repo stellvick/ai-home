@@ -1,4 +1,4 @@
-# Phase 0 Research — Oráculo IA — Branding, UI e Temas
+# Phase 0 Research — IA Oracle — Branding, UI e Temas
 
 ## Unknowns and Decisions
 

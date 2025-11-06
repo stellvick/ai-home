@@ -50,10 +50,10 @@ export const LoginPage: React.FC = () => {
         {/* Header with branding */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-3xl mb-6 shadow-2xl shadow-primary/20">
-            <img src={logo} alt="Oráculo IA Logo" className="w-12 h-12" />
+            <img src={logo} alt="IA Oracle Logo" className="w-12 h-12" />
           </div>
           <h1 className="text-3xl font-heading text-white mb-3 tracking-heading drop-shadow-lg">
-            Oráculo IA
+            IA Oracle
           </h1>
         </div>
 

@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Oráculo IA — Branding, UI e Temas
+# Specification Quality Checklist: IA Oracle — Branding, UI e Temas
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2025-11-05

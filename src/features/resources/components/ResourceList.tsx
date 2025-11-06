@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Input, Button, Card, CardBody, Pagination, Chip, Select, SelectItem } from '@heroui/react'
+import { Input, Button, Pagination, Chip, Select, SelectItem } from '@heroui/react'
 import { api } from '../../../services/api'
 import { useQueryParams } from '../../../hooks/useQueryParams'
 import { EvaluateButton } from './EvaluateButton'
+import { ProfessionalCard } from '../../../components/ui/ProfessionalCard'
 import { Recurso } from '../../../types/contracts'
 
 export const ResourceList: React.FC = () => {
@@ -47,27 +48,29 @@ export const ResourceList: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-4">
-        <Input
-          placeholder="Buscar recursos..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="flex-1"
-        />
-        <Select
-          placeholder="Status de avaliação"
-          selectedKeys={avaliado ? [avaliado] : []}
-          onSelectionChange={(keys) => setAvaliado(Array.from(keys)[0] as string)}
-          className="w-48"
-        >
-          <SelectItem key="">Todos</SelectItem>
-          <SelectItem key="true">Avaliados</SelectItem>
-          <SelectItem key="false">Não avaliados</SelectItem>
-        </Select>
-        <Button onClick={handleSearch}>
-          🔍 Buscar
-        </Button>
-      </div>
+      <ProfessionalCard className="p-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-white/30 shadow-3xl">
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Input
+            placeholder="Buscar recursos..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/60"
+          />
+          <Select
+            placeholder="Status de avaliação"
+            selectedKeys={avaliado ? [avaliado] : []}
+            onSelectionChange={(keys) => setAvaliado(Array.from(keys)[0] as string)}
+            className="w-48 bg-white/10 border-white/20"
+          >
+            <SelectItem key="">Todos</SelectItem>
+            <SelectItem key="true">Avaliados</SelectItem>
+            <SelectItem key="false">Não avaliados</SelectItem>
+          </Select>
+          <Button onClick={handleSearch} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-6 py-2 rounded-xl shadow-lg">
+            🔍 Buscar
+          </Button>
+        </div>
+      </ProfessionalCard>
 
       {/* Resources Grid */}
       {data?.items.length === 0 ? (
@@ -81,30 +84,28 @@ export const ResourceList: React.FC = () => {
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {data?.items.map((resource: Recurso) => (
-              <Card key={resource.id} className="bg-surface border border-border hover:shadow-lg transition-all duration-300">
-                <CardBody className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="font-semibold text-foreground line-clamp-2">
-                      {resource.titulo}
-                    </h3>
-                    <Chip
-                      size="sm"
-                      variant={resource.avaliado ? "solid" : "bordered"}
-                      color={resource.avaliado ? "success" : "default"}
-                    >
-                      {resource.avaliado ? "⭐ Avaliado" : "⏳ Pendente"}
-                    </Chip>
-                  </div>
+              <ProfessionalCard key={resource.id} className="p-6 hover:scale-105 transition-transform duration-200">
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="font-semibold text-foreground line-clamp-2">
+                    {resource.titulo}
+                  </h3>
+                  <Chip
+                    size="sm"
+                    variant={resource.avaliado ? "solid" : "bordered"}
+                    color={resource.avaliado ? "success" : "default"}
+                  >
+                    {resource.avaliado ? "⭐ Avaliado" : "⏳ Pendente"}
+                  </Chip>
+                </div>
 
-                  <p className="text-foreground/70 text-sm leading-body line-clamp-3 mb-4">
-                    {resource.descricao}
-                  </p>
+                <p className="text-foreground/70 text-sm leading-body line-clamp-3 mb-4">
+                  {resource.descricao}
+                </p>
 
-                  <div className="flex justify-end">
-                    {!resource.avaliado && <EvaluateButton resourceId={resource.id} />}
-                  </div>
-                </CardBody>
-              </Card>
+                <div className="flex justify-end">
+                  {!resource.avaliado && <EvaluateButton resourceId={resource.id} />}
+                </div>
+              </ProfessionalCard>
             ))}
           </div>
 

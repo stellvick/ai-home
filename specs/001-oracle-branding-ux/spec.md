@@ -1,4 +1,4 @@
-# Feature Specification: Oráculo IA — Branding, UI e Temas
+# Feature Specification: IA Oracle — Branding, UI e Temas
 
 **Feature Branch**: `001-oracle-branding-ux`  
 **Created**: 2025-11-05  
@@ -15,7 +15,7 @@
 
 ### User Story 1 - Acessar a página de Login e entender a proposta (Priority: P1)
 
-Como visitante, quero acessar a página de Login e entender claramente a proposta de valor do Oráculo IA, com interface profissional e call-to-action destacado para criar conta ou entrar, para decidir avançar.
+Como visitante, quero acessar a página de Login e entender claramente a proposta de valor do IA Oracle, com interface profissional e call-to-action destacado para criar conta ou entrar, para decidir avançar.
 
 **Why this priority**: A primeira impressão define confiança e continuidade de navegação.
 

@@ -1,4 +1,4 @@
-# Tasks — Oráculo IA — Branding, UI e Temas
+# Tasks — IA Oracle — Branding, UI e Temas
 
 Branch: 001-oracle-branding-ux  
 Spec: specs/001-oracle-branding-ux/spec.md  

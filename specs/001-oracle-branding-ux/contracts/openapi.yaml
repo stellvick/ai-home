@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Oráculo IA Frontend Contracts (n8n-backed)
+  title: IA Oracle Frontend Contracts (n8n-backed)
   version: 0.1.0
 servers:
   - url: ${VITE_API_BASE_URL}

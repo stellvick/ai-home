@@ -1,4 +1,4 @@
-# Quickstart — Oráculo IA (Frontend SPA)
+# Quickstart — IA Oracle (Frontend SPA)
 
 ## Requisitos
 - Node 18+

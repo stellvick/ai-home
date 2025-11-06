@@ -1,4 +1,4 @@
-# Data Model — Oráculo IA
+# Data Model — IA Oracle
 
 ## Entities
 
