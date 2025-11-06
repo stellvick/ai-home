@@ -26,6 +26,7 @@ Referências:
 - Tailwind PostCSS plugin: `@tailwindcss/postcss`
 
 ## Estrutura sugerida (src/)
+- `components/ui/`: componentes reutilizáveis como `MysticalBackground` (background gradiente místico) e `MysticalCard` (card glassmorphism com borda brand)
 - `features/auth`: login, guards, encrypt-storage
 - `features/dashboard`: lista, filtros, paginação, modal
 - `features/chat`: chats e conversas

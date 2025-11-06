@@ -250,3 +250,9 @@
   border-color: #4B0082 !important;
   box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1) !important;
 }
+
+/* Reduced motion support */
+.reduce-motion * {
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+}

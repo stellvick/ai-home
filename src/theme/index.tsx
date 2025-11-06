@@ -30,5 +30,15 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     document.body.className = `theme-${theme}`
   }, [theme])
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const handleChange = () => {
+      document.body.classList.toggle('reduce-motion', mediaQuery.matches)
+    }
+    handleChange()
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
+
   return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
 }

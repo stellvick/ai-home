@@ -37,82 +37,83 @@ Plan: specs/001-oracle-branding-ux/plan.md
 Goal: Página pública /login com mensagem de valor clara, interface profissional e CTA; validação com Yup; login real; redirect pós-login.
 Independent test: Usuários entendem a proposta em 10s; submissão válida leva ao Dashboard; inválida mostra erros claros.
 
-- [ ] T023 [US1] Create src/features/auth/pages/LoginPage.tsx (HeroUI form, brand copy, CTA)
-- [ ] T024 [US1] Yup schema in src/features/auth/validation/login.schema.ts
-- [ ] T025 [US1] Auth service login() using POST /auth/login in src/services/api/real/auth.ts
-- [ ] T026 [US1] On success, save token via encrypt-storage and update auth store (src/store/auth.ts)
-- [ ] T027 [US1] Route /login public in src/routes/router.tsx; link guards redirect to dashboard after login
-- [ ] T028 [US1] Visual: background/illustration using assets/ and brand colors; ensure contrast
+- [X] T023 [US1] Create src/features/auth/pages/LoginPage.tsx (HeroUI form, brand copy, CTA)
+- [X] T024 [US1] Yup schema in src/features/auth/validation/login.schema.ts
+- [X] T025 [US1] Auth service login() using POST /auth/login in src/services/api/real/auth.ts
+- [X] T026 [US1] On success, save token via encrypt-storage and update auth store (src/store/auth.ts)
+- [X] T027 [US1] Route /login public in src/routes/router.tsx; link guards redirect to dashboard after login
+- [X] T028 [US1] Visual: background/illustration using assets/ and brand colors; ensure contrast
 
 ## Phase 4 — [US2] Seleção e aplicação de tema (P1)
 
 Goal: Alternar entre oraculo-lunar (padrão) e oraculo-sombras; preview instantâneo; persistência; respeito a reduzir movimento.
 Independent test: Alternância em <10s com efeito imediato; preferência persiste em reload.
 
-- [ ] T029 [P] [US2] Theme settings page in src/features/settings/pages/ThemeSettings.tsx (toggle + preview)
-- [ ] T030 [US2] Persist theme selection in settings store and local storage
-- [ ] T031 [US2] Apply theme across app via ThemeProvider (src/theme/index.tsx)
-- [ ] T032 [US2] Honor prefers-reduced-motion in animations (src/theme/themes.ts)
+- [X] T029 [P] [US2] Theme settings page in src/features/settings/pages/ThemeSettings.tsx (toggle + preview)
+- [X] T030 [US2] Persist theme selection in settings store and local storage
+- [X] T031 [US2] Apply theme across app via ThemeProvider (src/theme/index.tsx)
+- [X] T032 [US2] Honor prefers-reduced-motion in animations (src/theme/themes.ts)
 
 ## Phase 5 — [US3] Autenticação e navegação com feedback (P2)
 
 Goal: Fluxo de login/cadastro simples (cadastro pode ser adiado); pós-login direciona Dashboard; erros claros.
 Independent test: Login válido redireciona; inválido mostra mensagens; loading states visíveis.
 
-- [ ] T033 [US3] Implement RequireAuth guard and redirect behavior (src/routes/guards/RequireAuth.tsx)
-- [ ] T034 [US3] Add logout action clearing encrypt-storage and store (src/store/auth.ts)
-- [ ] T035 [US3] Loading/disabled states on login form (src/features/auth/pages/LoginPage.tsx)
+- [X] T033 [US3] Implement RequireAuth guard and redirect behavior (src/routes/guards/RequireAuth.tsx)
+- [X] T034 [US3] Add logout action clearing encrypt-storage and store (src/store/auth.ts)
+- [X] T035 [US3] Loading/disabled states on login form (src/features/auth/pages/LoginPage.tsx)
 
 ## Phase 6 — [US4] Dashboard: lista, busca, paginação, detalhes (P2)
 
 Goal: Exibir itens de API mock com paginação e busca; modal de detalhes ao clicar.
 Independent test: Buscar por termo; navegar páginas; abrir modal com detalhes; estados vazios e erro informativos.
 
-- [ ] T036 [US4] Items service: list/get in src/services/api/{real,mock}/items.ts
-- [ ] T037 [P] [US4] Dashboard page in src/features/dashboard/pages/DashboardPage.tsx (layout + header)
-- [ ] T038 [P] [US4] ItemList component with React Query, search and pagination in src/features/dashboard/components/ItemList.tsx
-- [ ] T039 [US4] ItemModal component for details in src/features/dashboard/components/ItemModal.tsx
-- [ ] T040 [US4] useQueryParams hook for page/search in src/hooks/useQueryParams.ts
+- [X] T036 [US4] Items service: list/get in src/services/api/{real,mock}/items.ts
+- [X] T037 [P] [US4] Dashboard page in src/features/dashboard/pages/DashboardPage.tsx (layout + header)
+- [X] T038 [P] [US4] ItemList component with React Query, search and pagination in src/features/dashboard/components/ItemList.tsx
+- [X] T039 [US4] ItemModal component for details in src/features/dashboard/components/ItemModal.tsx
+- [X] T040 [US4] useQueryParams hook for page/search in src/hooks/useQueryParams.ts
 
 ## Phase 7 — [US5] Chat IA: múltiplos chats e conversas (P2)
 
 Goal: Selecionar chat, listar conversas, criar/renomear/deletar conversas; trocar chat atualiza lista.
 Independent test: Trocar chat muda conversas; criar/renomear/deletar reflete imediatamente; UX clara.
 
-- [ ] T041 [US5] Chat services in src/services/api/{real,mock}/chats.ts and conversations.ts
-- [ ] T042 [P] [US5] ChatPage in src/features/chat/pages/ChatPage.tsx
-- [ ] T043 [P] [US5] ChatList component in src/features/chat/components/ChatList.tsx
-- [ ] T044 [US5] ConversationList component with CRUD in src/features/chat/components/ConversationList.tsx
+- [X] T041 [US5] Chat services in src/services/api/{real,mock}/chats.ts and conversations.ts
+- [X] T042 [P] [US5] ChatPage in src/features/chat/pages/ChatPage.tsx
+- [X] T043 [P] [US5] ChatList component in src/features/chat/components/ChatList.tsx
+- [X] T044 [US5] ConversationList component with CRUD in src/features/chat/components/ConversationList.tsx
 
 ## Phase 8 — [US6] Recursos & Avaliação (P2)
 
 Goal: Listar recursos com filtros (avaliado/search) e avaliar item (POST /resources/{id}/evaluate); sistema de avaliação visual.
 Independent test: Filtro por status e busca; registrar avaliação; feedback claro em sucesso/erro.
 
-- [ ] T045 [US6] Resources service in src/services/api/{real,mock}/resources.ts
-- [ ] T046 [P] [US6] ResourcesPage in src/features/resources/pages/ResourcesPage.tsx
-- [ ] T047 [US6] ResourceList with filters and pagination in src/features/resources/components/ResourceList.tsx
-- [ ] T048 [US6] Evaluate action UI in src/features/resources/components/EvaluateButton.tsx
+- [X] T045 [US6] Resources service in src/services/api/{real,mock}/resources.ts
+- [X] T046 [P] [US6] ResourcesPage in src/features/resources/pages/ResourcesPage.tsx
+- [X] T047 [US6] ResourceList with filters and pagination in src/features/resources/components/ResourceList.tsx
+- [X] T048 [US6] Evaluate action UI in src/features/resources/components/EvaluateButton.tsx
 
 ## Phase 9 — [US7] Configurações: Perfil, Notificações, Segurança, Chat IA (P2)
 
 Goal: Abas de configurações; salvar preferências; listar/encerrar sessões (UI baseada no backend n8n); configs de chat IA.
 Independent test: Alterar cada aba e persistir; encerrar sessão remove da lista; mensagens claras.
 
-- [ ] T049 [US7] Settings layout with tabs in src/features/settings/pages/SettingsPage.tsx
-- [ ] T050 [P] [US7] Perfil form in src/features/settings/components/ProfileForm.tsx
-- [ ] T051 [P] [US7] Notificações form in src/features/settings/components/NotificationsForm.tsx
-- [ ] T052 [P] [US7] Segurança (sessões) UI in src/features/settings/components/SessionsPanel.tsx
-- [ ] T053 [US7] Chat IA preferences in src/features/settings/components/ChatPreferences.tsx
+- [X] T049 [US7] Settings layout with tabs in src/features/settings/pages/SettingsPage.tsx
+- [X] T050 [P] [US7] Perfil form in src/features/settings/components/ProfileForm.tsx
+- [X] T051 [P] [US7] Notificações form in src/features/settings/components/NotificationsForm.tsx
+- [X] T052 [P] [US7] Segurança (sessões) UI in src/features/settings/components/SessionsPanel.tsx
+- [X] T053 [US7] Chat IA preferences in src/features/settings/components/ChatPreferences.tsx
 
 ## Final Phase — Polish & Cross-Cutting
 
 - [ ] T054 A11y: keyboard navigation, focus outlines, aria-labels across components
 - [ ] T055 Error/empty/loading states standardized components in src/components/feedback/*
-- [ ] T056 Use assets: favicon and logo from /assets in index.html and layout header
-- [ ] T057 404 and fallback routes in src/routes/router.tsx
+- [X] T056 Use assets: favicon and logo from /assets in index.html and layout header
+- [X] T057 404 and fallback routes in src/routes/router.tsx
 - [ ] T058 Performance: memoization and suspense where applicable; respect prefers-reduced-motion
-- [ ] T059 Documentation: update quickstart.md with actual commands and env usage
+- [X] T059 Documentation: update quickstart.md with actual commands and env usage
+- [X] T060 UI Components: create reusable MysticalBackground and MysticalCard components for consistent mystical styling across pages
 
 ## Dependencies (story order)
 

@@ -5,7 +5,7 @@
 
 ## Summary
 
-Frontend web (TypeScript + React 19, Vite, Tailwind 4, HeroUI) delivering: Login público (com validação Yup e autenticação simples com token em encrypt-storage), Dashboard com lista paginada e buscável (React Query + filtros), detalhes via modal, Chat IA multi-conversas, Configurações (Perfil, Tema, Notificações, Segurança, Chat). Dois temas oficiais (Oráculo Lunar padrão e Oráculo das Sombras) e UI/UX com elementos temáticos sutis. Integra com API (n8n) via variável de ambiente para alternar mock/real (mock inicialmente; login real).
+Frontend web (TypeScript + React 19, Vite, Tailwind 4, HeroUI) delivering: Login público (com validação Yup e autenticação simples com token em encrypt-storage), Dashboard com lista paginada e buscável (React Query + filtros), detalhes via modal, Chat IA multi-conversas, Configurações (Perfil, Tema, Notificações, Segurança, Chat). Dois temas oficiais (Oráculo Lunar padrão e Oráculo das Sombras) e UI/UX com estilo místico consistente (backgrounds gradientes, glassmorphism cards com bordas brand, elementos decorativos sutis). Integra com API (n8n) via variável de ambiente para alternar mock/real (mock inicialmente; login real).
 
 ## Technical Context
 
@@ -59,7 +59,7 @@ specs/001-oracle-branding-ux/
 ```text
 src/
 ├── assets/                 # imagens e ícones (usa /assets do repo quando buildar)
-├── components/             # UI reutilizável (HeroUI wrappers)
+├── components/             # UI reutilizável (HeroUI wrappers, MysticalBackground, MysticalCard)
 ├── features/
 │   ├── auth/               # login, rotas protegidas, token storage
 │   ├── dashboard/          # listagem, filtros, paginação, modal de detalhes

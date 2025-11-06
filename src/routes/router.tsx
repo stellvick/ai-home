@@ -4,6 +4,9 @@ import { paths } from './paths'
 import { LoginPage } from '../features/auth/pages/LoginPage'
 import { DashboardPage } from '../features/dashboard/pages/DashboardPage'
 import { ThemeSettings } from '../features/settings/pages/ThemeSettings'
+import { ChatPage } from '../features/chat/pages/ChatPage'
+import { ResourcesPage } from '../features/resources/pages/ResourcesPage'
+import { SettingsPage } from '../features/settings/pages/SettingsPage'
 
 export const router = createBrowserRouter([
   {
@@ -32,10 +35,7 @@ export const router = createBrowserRouter([
     path: paths.settings,
     element: (
       <RequireAuth>
-        <div className="min-h-screen bg-background p-6">
-          <h1 className="text-2xl font-heading text-foreground mb-6">Configurações</h1>
-          <p className="text-foreground/70">Página de configurações em desenvolvimento...</p>
-        </div>
+        <SettingsPage />
       </RequireAuth>
     ),
   },
@@ -43,10 +43,7 @@ export const router = createBrowserRouter([
     path: paths.chat,
     element: (
       <RequireAuth>
-        <div className="min-h-screen bg-background p-6">
-          <h1 className="text-2xl font-heading text-foreground mb-6">Chat IA</h1>
-          <p className="text-foreground/70">Chat IA em desenvolvimento...</p>
-        </div>
+        <ChatPage />
       </RequireAuth>
     ),
   },
@@ -54,15 +51,16 @@ export const router = createBrowserRouter([
     path: paths.resources,
     element: (
       <RequireAuth>
-        <div className="min-h-screen bg-background p-6">
-          <h1 className="text-2xl font-heading text-foreground mb-6">Recursos</h1>
-          <p className="text-foreground/70">Página de recursos em desenvolvimento...</p>
-        </div>
+        <ResourcesPage />
       </RequireAuth>
     ),
   },
   {
     path: '/',
     element: <div>Home</div>,
+  },
+  {
+    path: '*',
+    element: <div className="min-h-screen flex items-center justify-center"><h1 className="text-2xl">404 - Página não encontrada</h1></div>,
   },
 ])

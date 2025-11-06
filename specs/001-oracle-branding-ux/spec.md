@@ -134,6 +134,11 @@ Como usuário, quero editar perfil, notificações, segurança e preferências d
 - Sessao: lista de sessões ativas, criação, expiração, encerramento manual.
 - Recurso e Avaliacao: item cadastrável/avaliável e suas avaliações (alto nível; sem detalhes técnicos).
 
+### UI Components
+
+- MysticalBackground: Componente reutilizável que fornece background gradiente místico com elementos decorativos sutis, usado em todas as páginas para consistência visual.
+- MysticalCard: Card com efeito glassmorphism, borda superior na cor da marca (#4B0082 ou #D4AF37), suporte opcional a onClick, usado para agrupar conteúdo em seções.
+
 ## Success Criteria (mandatory)
 
 ### Measurable Outcomes
